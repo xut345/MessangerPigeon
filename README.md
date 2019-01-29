@@ -11,6 +11,7 @@ npm install -g vue-cli
 
 # install dependencies (do all of these calls below this line in the working directory)
 npm install
+# ignore any warnings
 
 # install axios dependencies
 npm install -save axios
