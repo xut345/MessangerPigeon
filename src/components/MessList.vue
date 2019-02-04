@@ -2,7 +2,7 @@
 <div >
     <b-container fluid class="bg-light">
         <b-row class="mess-fun">
-            <b-col > <div class="mess-btn">Private/Public</div> </b-col>
+            <b-col > <ui-switch class="switch" v-model="switch1" switch-position="right">{{switch1?"Private":"Public"}}    </ui-switch> </b-col>
         </b-row>
         
     </b-container>
@@ -22,6 +22,8 @@ export default {
     data(){
         return{
             messages:list,
+            switch1:false,
+            switchContext:"Private"
         }
     }
  
@@ -61,5 +63,9 @@ export default {
     cursor: pointer;
     float: right;
 
+}
+
+.switch{
+    float: right;
 }
 </style>

@@ -12,7 +12,7 @@ export default {
 <style scoped>
 
 .message-box{
-  width: 100%;
+  width: 55%;
   height: 70%;
   background: #fff;
   border-radius: 20px;

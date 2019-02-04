@@ -8,8 +8,10 @@
             <h3 style="margin-top:30px">Bracio</h3>
           </b-col>
         </b-row>
+        <b-row class="message-bar" >
+            <b-col class="mess-item" >Message</b-col>
+        </b-row>
         <b-row class="nav-bar" >
-            <b-col class="nav-item" >Message</b-col>
             <b-col class="nav-item">Friends</b-col>
             <b-col class="nav-item">Chat</b-col>
         </b-row>
@@ -33,26 +35,32 @@ export default {
 
 .nav-bar{
     border-bottom: 1px solid #d8d8d8;
-    background: #36768db7;
+    background: #0588a8;
     margin-bottom: 20px;
-     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
-.nav-item:nth-child(-n+2){
+.message-bar{
+    border-bottom: 1px solid #85c2d8ab;
+    background: #0588a8;
+    padding-bottom: 10px;
+    padding-top: 10px; 
+}
+
+.nav-item:nth-child(-n+1){
     border-right: 1px solid white;
 }
 
-.nav-item{
+.nav-item,.mess-item{
     color:white;
     height: 100%;
-
     cursor: pointer;
     text-align: center;
     font-weight: 600;
 }
 
-.nav-item:hover{
+.nav-item:hover,.mess-item:hover{
     color: #555;
 }
 
