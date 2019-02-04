@@ -7,29 +7,23 @@
         
     </b-container>
     <div class="mess-list">
-        <div class="mess">1</div>
-        <div class="mess">2</div>
-        <div class="mess">3</div>
-        <div class="mess">1</div>
-        <div class="mess">2</div>
-        <div class="mess">3</div>
-                <div class="mess">1</div>
-        <div class="mess">2</div>
-        <div class="mess">3</div>
-                <div class="mess">1</div>
-        <div class="mess">2</div>
-        <div class="mess">3</div>
-                <div class="mess">1</div>
-        <div class="mess">2</div>
-        <div class="mess">3</div>        
+        <div class="mess" v-for="mess in messages" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
     </div>
-
-  
 </div>
 </template>
 
 <script>
+
+import list from '../mock/messages.js'
+
+console.log(list)
+
 export default {
+    data(){
+        return{
+            messages:list,
+        }
+    }
  
 }
 </script>
@@ -43,6 +37,7 @@ export default {
     opacity: 0.9;
     white-space:nowrap;
     position: absolute;
+    cursor: pointer;
 }
 
 .mess{
@@ -51,6 +46,10 @@ export default {
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     padding-top: 15px;
+}
+
+.mess:hover{
+    background: #ddd;
 }
 
 .mess-fun{

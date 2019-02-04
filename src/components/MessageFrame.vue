@@ -1,6 +1,6 @@
 <template>
   <div class="root">
-
+    <MessageBox/>
     <b-container fluid class="mess-bottom">
       <div class="mess-btn">Send</div><div class="mess-btn">Receive</div>
         
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import MessageBox from "./MessageBox"
+
 export default {
   name: 'MessageFrame',
 }
@@ -44,6 +46,15 @@ export default {
   color: #aaa;
   cursor: pointer;
 
+}
+
+.message-box{
+  width: 50%;
+  height: 70%;
+  background: #fff;
+  border-radius: 20px;
+  margin: 60px 15%;
+  box-shadow: 0 4px 8px 0 #6db9d4b7, 0 6px 20px 0 #468aa375;
 }
 
 </style>
