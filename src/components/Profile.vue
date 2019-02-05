@@ -34,34 +34,34 @@ export default {
 }
 
 .nav-bar{
-    border-bottom: 1px solid #d8d8d8;
-    background: #0588a8;
+    border-bottom: 1px solid #0587a846;
     margin-bottom: 20px;
     padding-bottom: 10px;
     padding-top: 10px;
 }
 
 .message-bar{
-    border-bottom: 1px solid #85c2d8ab;
-    background: #0588a8;
+    border-top: 1px solid #0587a846;
+    border-bottom: 1px solid #0587a846;
     padding-bottom: 10px;
     padding-top: 10px; 
 }
 
 .nav-item:nth-child(-n+1){
-    border-right: 1px solid white;
+    border-right: 1px solid #0587a846;
 }
 
 .nav-item,.mess-item{
-    color:white;
+    color:#555;
     height: 100%;
     cursor: pointer;
     text-align: center;
     font-weight: 600;
+   
 }
 
 .nav-item:hover,.mess-item:hover{
-    color: #555;
+    color: #0588a8;
 }
 
 </style>

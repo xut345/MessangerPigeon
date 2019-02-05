@@ -1,11 +1,8 @@
 <template>
 <div >
-    <b-container fluid class="bg-light">
-        <b-row class="mess-fun">
-            <b-col > <ui-switch class="switch" v-model="switch1" switch-position="right">{{switch1?"Private":"Public"}}    </ui-switch> </b-col>
-        </b-row>
-        
-    </b-container>
+    <div class="mess-fun">
+        <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
+    </div>
     <div class="mess-list">
         <div class="mess" v-for="mess in messages" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
     </div>
@@ -23,7 +20,6 @@ export default {
         return{
             messages:list,
             switch1:false,
-            switchContext:"Private"
         }
     }
  
@@ -56,7 +52,9 @@ export default {
 
 .mess-fun{
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    height: 20px;
+    padding-right: 20px;
 }
 
 .mess-btn{

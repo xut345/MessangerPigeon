@@ -11,6 +11,7 @@ const messageDataModel={
     user:"Yunlong", //Reference to user data model
     created_time:"2019/01/20", //Time stamp
     content: "a test message",
+    address:"gps location",
     id:245244
 }
 
