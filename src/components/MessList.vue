@@ -22,7 +22,6 @@ export default {
             switch1:false,
         }
     }
- 
 }
 </script>
 
@@ -55,12 +54,6 @@ export default {
     margin-bottom: 20px;
     height: 20px;
     padding-right: 20px;
-}
-
-.mess-btn{
-    cursor: pointer;
-    float: right;
-
 }
 
 .switch{

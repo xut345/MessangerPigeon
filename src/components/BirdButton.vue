@@ -14,7 +14,7 @@
           <div class="cloud small"></div>
         </div>
       </div>
-      <SendMessageBox v-show="active"/>
+      <MessageBox v-show="active"/>
 
     </div>
 
@@ -22,18 +22,17 @@
 </template>
 
 <script>
-import SendMessageBox from "./SendMessageBox"
+import MessageBox from "./MessageBox"
 
 export default {
   components:{
-    SendMessageBox
+    MessageBox
   },
   data(){
     return{
         active: false
-
     }
-    },
+  },
   methods: {
       showOption: function(){
           this.active = !this.active;   

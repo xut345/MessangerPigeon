@@ -2,7 +2,6 @@
 <div>   
     <MessageFrameBackground/>
     <BirdButton/>   
-    
 </div>
 </template>
 
@@ -10,15 +9,12 @@
 import MessageFrameBackground from "./MessageFrameBackground"
 import BirdButton from "./BirdButton"
 
-
 export default {
   name: 'MessageFrame',
   components:{
     MessageFrameBackground,
     BirdButton
   },
-  
-  
 }
 </script>
 
