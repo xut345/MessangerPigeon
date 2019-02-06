@@ -1,5 +1,5 @@
 <template>
- <b-container fluid class="bg-light">
+ <b-container fluid >
         <b-row class="header">
           <b-col>
             <b-img thumbnail width="100px" fluid src="https://picsum.photos/250/250/?image=59" alt="Thumbnail" />

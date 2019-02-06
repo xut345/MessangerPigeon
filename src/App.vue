@@ -27,7 +27,6 @@ export default {
 
 <style>
 body{
-  background: #fff;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,7 +37,7 @@ body{
   width: 300px;
   height: 100%;
   overflow: hidden;
-  background: #f8f9fa;
+  background: #fafafa;
   position:fixed;
   top: 0;
   left: 0;
@@ -46,7 +45,6 @@ body{
 }
 #right {
   color: #2c3e50;
-  background: #fff;
   float: left;
   position: relative;overflow: hidden;
   height: 100%;

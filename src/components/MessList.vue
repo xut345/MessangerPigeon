@@ -47,7 +47,7 @@ export default {
 }
 
 .mess:hover{
-    background: #ddd;
+    background: #059dc317;
 }
 
 .mess-fun{

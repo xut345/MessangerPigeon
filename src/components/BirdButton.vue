@@ -1,24 +1,45 @@
 <template>
-    
-    <div class="globe">
-      <div class="bird">
-        <div class="body">
-          <div class="eye left"></div>
-          <div class="eye right"></div>
-          <div class="beak"><div></div></div>
-          <div class="feet"></div>
-          <div class="wire"></div>
+    <div>
+      <div class="globe" v-on:click="showOption">
+        <div class="bird">
+          <div class="body">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="beak"><div></div></div>
+            <div class="feet"></div>
+            <div class="wire"></div>
+          </div>
+          <div class="hills"></div>
+          <div class="cloud"></div>
+          <div class="cloud small"></div>
         </div>
-        <div class="hills"></div>
-        <div class="cloud"></div>
-        <div class="cloud small"></div>
       </div>
+      <SendMessageBox v-show="active"/>
+
     </div>
+
 
 </template>
 
 <script>
+import SendMessageBox from "./SendMessageBox"
+
 export default {
+  components:{
+    SendMessageBox
+  },
+  data(){
+    return{
+        active: false
+
+    }
+    },
+  methods: {
+      showOption: function(){
+          this.active = !this.active;   
+      }
+  }
+  
 }
 </script>
 
@@ -116,27 +137,7 @@ $timelineAccumulated: ();
 	}
 }
 
-@import url(https://fonts.googleapis.com/css?family=Fira+Sans:400,500italic);
 
-html {
-	height: 100%;
-	background-color: rgba(34,32,36,1);
-	background: radial-gradient(circle at center, rgba(71,65,76,1) 0%,rgba(34,32,36,1) 100%);
-	background-repeat: no-repeat;
-}
-body {
- text-align: center;
- font: normal 100% 'Fira Sans', sans-serif;
-}
-h2 {
-	font-size: 4vw;
-	span {
-		font-size: 60%;
-	}
-}
-a {
-	color: #aaa;
-}
 
 .globe:hover{
   border: 20px solid #ffffff;
@@ -154,7 +155,7 @@ a {
 	width: 250px;
 	height: 250px;
 	border-radius: 50%;
-	border: 20px solid #f7dbcf;
+	border: 20px solid #fff0ea;
 	box-sizing: border-box;
 	background: transparent;
 	overflow: hidden;
