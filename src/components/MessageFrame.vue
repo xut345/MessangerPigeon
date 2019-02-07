@@ -13,7 +13,7 @@ export default {
   name: 'MessageFrame',
   components:{
     MessageFrameBackground,
-    BirdButton
+    BirdButton,
   },
 }
 </script>

@@ -26,7 +26,7 @@ import MessageBox from "./MessageBox"
 
 export default {
   components:{
-    MessageBox
+	MessageBox,
   },
   data(){
     return{
@@ -58,7 +58,7 @@ $birdColor3: #01c7be;
 $timeline: (
  'begin'         : 0s,
  'eye-p0-1'      : 0.4s,
- 'eye-p1-1'		   : 0.4s,
+ 'eye-p1-1'		 : 0.4s,
  'eye-p4-1'      : 1.8s,
  'eye-p3-1'      : 0.4s,
  'eye-p4-2'      : 1s,
@@ -89,7 +89,7 @@ $timelineAccumulated: ();
 @keyframes eyes {
 	#{tp('begin')},
 	#{tp('eye-p0-1')},
-  #{tp('end')} {
+    #{tp('end')} {
    	top: -50px;
 	}
 	#{tp('eye-p1-1')} {

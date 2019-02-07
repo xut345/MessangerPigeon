@@ -1,8 +1,8 @@
 <template>
-    <div >
-      <ui-button class="self-btn"  @click="openModal('modal2')" > <div class="receive-btn">  RECEIVE </div> </ui-button>
-      <ui-button class="self-btn"  @click="openModal('modal1')">  <div class="send-btn">  SEND </div> </ui-button>
-        <ui-modal ref="modal1" title="New Message"  size="large" align-top :align-top-margin="200">
+    <div>
+      <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
+      <ui-button class="self-btn"  v-on:click="showEnvelope"> <div class="receive-btn">  RECEIVE </div> </ui-button>
+        <ui-modal ref="sendMessage" title="New Message"  size="large" align-top :align-top-margin="200">
             <div>
                 <b-form-group label="Title">
                 <b-form-input v-model="title" type="text" placeholder="Enter your name"></b-form-input>
@@ -23,20 +23,23 @@
                         :max-rows="10">
                 </b-form-textarea>
                 </b-form-group>
-                <b-button  @click="closeModal('modal1')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
+                <b-button  @click="closeModal('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
             </div>
         </ui-modal>
+        <Envelope v-show="show"/>
     </div>
 </template>
 
 <script>
-
+import Envelope from "./Envelope"
 export default {
   name: 'MessageBox',
   components:{
+       Envelope,
   },
   data(){
     return{
+      show:false,
       title: '',
       content:'',
       selected: 'private',
@@ -46,14 +49,17 @@ export default {
       ]
     }
   },
-      methods: {
-        openModal(ref) {
-            this.$refs[ref].open();
-        },
-        closeModal(ref) {
-            this.$refs[ref].close();
-        }
+  methods: {
+    openModal(ref) {
+        this.$refs[ref].open();
     },
+    closeModal(ref) {
+        this.$refs[ref].close();
+    },
+    showEnvelope: function(){
+        this.show = !this.show;   
+    }
+  }
 }
 </script>
 
@@ -140,4 +146,5 @@ export default {
 	
 	}
 }
+
 </style>
