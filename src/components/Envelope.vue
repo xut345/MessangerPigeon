@@ -45,22 +45,44 @@ export default {
 
 <style lang="scss">
 
+/* envelope */
+  #envelope1 {
+  background: white; 
+  margin: 5% auto;
+  height: 180px;
+  width: 250px;
+  position: relative;
+  left:30%;
+  border-radius:8px;
+  overflow:hidden;
+  animation: floaty 1s infinite;
+}
+
+@keyframes floaty {
+    0% {
+        transform:translate(0,0);
+    }
+    
+    50% {
+        transform:translate(0, 12px);
+    }
+}
+
 /* wings */
 
 .wing1 {
     background:white;
      border-radius: 12px 20px 60px 20px;
-     width:120px;
-     height:50px; margin-top:80px;
-     position:relative;
+     width:100px;
+     height:35px; margin-top:80px;
 }
 
 /* right wing */
 
 .right1 {
-    left:900px;
-    top:100px;
-    animation:flap1 1s infinite;
+    position: absolute;
+    left:73%;
+    animation:flap11 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
      border-radius: 12px 20px 60px 20px;
     transform:rotate(-10deg) translate(250px,0);
@@ -80,11 +102,11 @@ export default {
     content:'';
     background:white;
     width:70%;
-    height:70%;
+    height:80%;
        border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 20px 20px 60px 20px;
     transform:rotate(20deg) translate(-1px,0);
-    margin-top:38px;
+    margin-top:30px;
 }
 
 .right1:after {
@@ -93,19 +115,19 @@ export default {
     background:white;
     width:40%;
     transform:rotate(29deg) translate(-8px,0);
-    height:30%;
+    height:45%;
        border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 0px 0px 60px 70px;
-    margin-top:66px;
+    margin-top:50px;
 }
 
 /* left wing */
 
 .left1 {
-    left:970px;
-    bottom:25px;
+    position:absolute;
+    left:79.5%;
     border-radius:12px 20px 20px 60px;
-    animation:flap2 1s infinite;
+    animation:flap22 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
     transform:rotate(10deg) translate(-248px, 0);
 }
@@ -128,9 +150,9 @@ export default {
     width:70%;
        border-bottom:3px solid rgba(0,0,0,.08);
     transform:translate(46%,0) rotate(-20deg);
-    height:60%;
+    height:80%;
       border-radius:12px 20px 70px 70px;
-    margin-top:40px;
+    margin-top:30px;
 }
 
 .left1:after {
@@ -139,10 +161,10 @@ export default {
     background:white;
     width:40%;
        border-bottom:3px solid rgba(0,0,0,.08);
-    height:30%;
+    height:45%;
      transform:translate(164%,0) rotate(-34deg);
      border-radius:0px 0px 70px 60px;
-    margin-top:58px;
+    margin-top:46px;
 }
 
 /* heart */
@@ -150,13 +172,13 @@ export default {
   cursor: pointer;
 }
 .heart1{
-    position: relative;
-    bottom:160px;
-    left:950px;
+    position: absolute;
+    left:76.5%;
+    top:12%;
+    height: 100px;
     width: 120px;
     z-index:1;
-    height: 100px;
-    animation: heart1 1s infinite;
+    animation: heart2 1s infinite;
     transform:scale(.8);
     transition:.6s;
     margin-top:60px;
@@ -196,20 +218,21 @@ export default {
 }
 
 /* envelope */
-  #envelope1 {
+
+  #envelope2 {
   background: white; 
-  margin: 200px auto;
-  height: 200*0.8px;
+  margin-bottom: 200px;
+  height: 180px;
+  width: 250px;
   position: relative;
-  bottom:500px;
-  left:350px;
-  width: 320*0.8px;
+  left:71%;
+  top:40px;
   border-radius:8px;
   overflow:hidden;
-  animation: floaty 1s infinite;
+  animation: floaty1 1s infinite;
 }
 
-@keyframes floaty {
+@keyframes floaty1 {
     0% {
         transform:translate(0,0);
     }
@@ -219,21 +242,19 @@ export default {
     }
 }
 
-
 .wing2 {
     background:white;
      border-radius: 12px 20px 60px 20px;
-     width:120px;
-     height:50px; margin-top:80px;
-     position:relative;
+     width:100px;
+     height:35px; margin-top:80px;
 }
 
 /* right wing */
 
 .right2 {
     position:absolute;
-    left:900px;
-    top:385px;
+    right:19.5%;
+    bottom:30%;
     animation:flap11 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
      border-radius: 12px 20px 60px 20px;
@@ -254,11 +275,11 @@ export default {
     content:'';
     background:white;
     width:70%;
-    height:70%;
+    height:80%;
        border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 20px 20px 60px 20px;
     transform:rotate(20deg) translate(-1px,0);
-    margin-top:38px;
+    margin-top:30px;
 }
 
 .right2:after {
@@ -267,18 +288,18 @@ export default {
     background:white;
     width:40%;
     transform:rotate(29deg) translate(-8px,0);
-    height:30%;
+    height:45%;
        border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 0px 0px 60px 70px;
-    margin-top:66px;
+    margin-top:50px;
 }
 
 /* left wing */
 
 .left2 {
     position:absolute;
-    left:970px;
-    top:380px;
+    bottom:30%;
+    right:13%;
     border-radius:12px 20px 20px 60px;
     animation:flap22 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
@@ -303,9 +324,9 @@ export default {
     width:70%;
        border-bottom:3px solid rgba(0,0,0,.08);
     transform:translate(46%,0) rotate(-20deg);
-    height:60%;
+    height:80%;
       border-radius:12px 20px 70px 70px;
-    margin-top:40px;
+    margin-top:30px;
 }
 
 .left2:after {
@@ -314,10 +335,10 @@ export default {
     background:white;
     width:40%;
        border-bottom:3px solid rgba(0,0,0,.08);
-    height:30%;
+    height:45%;
      transform:translate(164%,0) rotate(-34deg);
      border-radius:0px 0px 70px 60px;
-    margin-top:58px;
+    margin-top:46px;
 }
 
 /* heart */
@@ -327,11 +348,11 @@ export default {
 
 .heart2{
     position: absolute;
-    top:380px;
-    left:950px;
+    bottom:26%;
+    right:14.5%;
+    height: 100px;
     width: 120px;
     z-index:1;
-    height: 100px;
     animation: heart2 1s infinite;
     transform:scale(.8);
     transition:.6s;
@@ -343,7 +364,7 @@ export default {
     content: "";
     width: 50px;
     height: 80px;
-    position: absolute;
+    position: fixed;
     left: 50px;
     top: 0;
     border-radius: 50px 50px 6px 6px;
@@ -368,31 +389,6 @@ export default {
     
     100% {
         transform:scale(.8);
-    }
-}
-
-/* envelope */
-
-  #envelope2 {
-  background: white; 
-  margin: 200px auto;
-  height: 200*0.8px;
-  position: absolute;
-  bottom:270px;
-  left:870px;
-  width: 320*0.8px;
-  border-radius:8px;
-  overflow:hidden;
-  animation: floaty1 1s infinite;
-}
-
-@keyframes floaty1 {
-    0% {
-        transform:translate(0,0);
-    }
-    
-    50% {
-        transform:translate(0, 12px);
     }
 }
 
