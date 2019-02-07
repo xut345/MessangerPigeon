@@ -8,7 +8,7 @@
   <div class="wing2 left2"></div>
   <div class="heart2" @click="openModal('receiveMessage')"></div>
   <div id="envelope2"></div>
-  <ui-modal ref="receiveMessage" title="Message"  size="large" align-top :align-top-margin="200">
+  <ui-modal ref="receiveMessage" title="Message"  size="middle" align-top :align-top-margin="200">
             <div>
                 <b-form-textarea id="textarea1"
                         v-model="content"
