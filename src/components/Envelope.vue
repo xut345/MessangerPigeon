@@ -1,24 +1,22 @@
 <template>
 <div>
-    <div id="envelope1">
-        <div class="heart1" @click="openModal('receiveMessage')"></div>
+    <div class=envelope>
+        <div class="wing1 left1"></div>
+        <div class="wing1 right1"></div>
+        <div class="wing2 left2"></div>
+        <div class="wing2 right2"></div>
+        <div class="envelope1">
+            <div class="heart1" @click="openModal('receiveMessage')"></div>
+        </div>
+        <div class="envelope2">
+            <div class="heart2" @click="openModal('receiveMessage')"></div>
+        </div>
     </div>
-    <div class="wing1 right1"></div>
-    <div class="wing1 left1"></div>
-    <div id="envelope2">
-        <div class="heart2" @click="openModal('receiveMessage')"></div>
-    </div>
-    <div class="wing2 right2"></div>
-    <div class="wing2 left2"></div>
-  <ui-modal ref="receiveMessage" title="Message"  size="middle" align-top :align-top-margin="200">
+  <ui-modal ref="receiveMessage" title="Message title"  size="middle" align-top :align-top-margin="200">
             <div>
-                <b-form-textarea id="textarea1"
-                        v-model="content"
-                        :rows="10"
-                        :max-rows="10">
-                </b-form-textarea>
+                <b-form-text id="textarea1"><h2>Hello!</h2></b-form-text>
                 <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
-                <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:right" > Accept </b-button>
+                <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
             </div>
         </ui-modal>
   
@@ -47,14 +45,21 @@ export default {
 
 <style lang="scss">
 
+  .envelope{
+      position:fixed;
+      height:600px;
+      width:600px;
+      right:5%;
+      bottom: 10%;
+  }
 /* envelope */
-  #envelope1 {
+  .envelope1 {
   background: white; 
-  margin: 5% auto;
-  height: 180px;
-  width: 250px;
-  position: relative;
-  left:30%;
+  top:10%;
+  left: 25%;
+  height: 200px;
+  width: 300px;
+  position: absolute;
   border-radius:8px;
   overflow:hidden;
   animation: floaty 1s infinite;
@@ -76,28 +81,28 @@ export default {
     background:white;
      border-radius: 12px 20px 60px 20px;
      width:100px;
-     height:35px; margin-top:80px;
+     height:35px;
 }
 
 /* right wing */
 
 .right1 {
     position: absolute;
-    left:73%;
-    bottom:70%;
-    animation:flap11 1s infinite;
+    right: 5%;
+    top: 20%;
+    animation:flap1 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
      border-radius: 12px 20px 60px 20px;
-    transform:rotate(-10deg) translate(250px,0);
+    transform:rotate(-10deg);
 }
 
 @keyframes flap1 {
     0% {
-        transform:rotate(-10deg) translate(250px,0);
+        transform:rotate(-10deg);
     }
     
     50% {
-        transform:rotate(-5deg) translate(250px,0);
+        transform:rotate(-5deg);
     }
 }
 .right1:before {
@@ -128,21 +133,21 @@ export default {
 
 .left1 {
     position:absolute;
-    left:79.5%;
-    bottom:70%;
+    left:5%;
+    top:20%;
     border-radius:12px 20px 20px 60px;
-    animation:flap22 1s infinite;
+    animation:flap2 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
-    transform:rotate(10deg) translate(-248px, 0);
+    transform:rotate(10deg);
 }
 
 @keyframes flap2 {
     0% {
-        transform:rotate(10deg) translate(-248px,0);
+        transform:rotate(10deg);
     }
     
     50% {
-        transform:rotate(5deg) translate(-248px,0);
+        transform:rotate(5deg);
     }
 }
 
@@ -177,15 +182,14 @@ export default {
 }
 .heart1{
     position: absolute;
-    left:31%;
-    bottom:20%;
+    margin: 20% auto;
+    left: 33%;
     height: 100px;
     width: 120px;
     z-index:1;
     animation: heart2 1s infinite;
     transform:scale(.8);
     transition:.6s;
-    margin-top:60px;
     
 }
 .heart1:before,
@@ -223,14 +227,13 @@ export default {
 
 /* envelope */
 
-  #envelope2 {
+  .envelope2 {
   background: white; 
-  margin-bottom: 200px;
-  height: 180px;
-  width: 250px;
-  position: relative;
-  left:71%;
-  top:40px;
+  height: 200px;
+  width: 300px;
+  position: absolute;
+  left: 25%;
+  bottom:10%;
   border-radius:8px;
   overflow:hidden;
   animation: floaty1 1s infinite;
@@ -250,28 +253,28 @@ export default {
     background:white;
      border-radius: 12px 20px 60px 20px;
      width:100px;
-     height:35px; margin-top:80px;
+     height:35px;
 }
 
 /* right wing */
 
 .right2 {
     position:absolute;
-    right:19.5%;
-    bottom:30%;
+    right:5%;
+    bottom:28%;
     animation:flap11 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
      border-radius: 12px 20px 60px 20px;
-    transform:rotate(-10deg) translate(250px,0);
+    transform:rotate(-10deg);
 }
 
 @keyframes flap11 {
     0% {
-        transform:rotate(-10deg) translate(250px,0);
+        transform:rotate(-10deg);
     }
     
     50% {
-        transform:rotate(-5deg) translate(250px,0);
+        transform:rotate(-5deg);
     }
 }
 .right2:before {
@@ -302,21 +305,21 @@ export default {
 
 .left2 {
     position:absolute;
-    bottom:30%;
-    right:13%;
+    left:5%;
+    bottom:28%;
     border-radius:12px 20px 20px 60px;
     animation:flap22 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
-    transform:rotate(10deg) translate(-248px, 0);
+    transform:rotate(10deg);
 }
 
 @keyframes flap22 {
     0% {
-        transform:rotate(10deg) translate(-248px,0);
+        transform:rotate(10deg);
     }
     
     50% {
-        transform:rotate(5deg) translate(-248px,0);
+        transform:rotate(5deg);
     }
 }
 
@@ -352,8 +355,8 @@ export default {
 
 .heart2{
     position: absolute;
-    bottom:20%;
-    right:21%;
+    margin: 20% auto;
+    left: 33%;
     height: 100px;
     width: 120px;
     z-index:1;
