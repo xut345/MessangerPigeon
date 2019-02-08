@@ -1,13 +1,15 @@
 <template>
 <div>
-  <div class="wing1 right1"></div>
-  <div class="wing1 left1"></div>
-  <div class="heart1" @click="openModal('receiveMessage')"></div>
-  <div id="envelope1"></div>
-  <div class="wing2 right2"></div>
-  <div class="wing2 left2"></div>
-  <div class="heart2" @click="openModal('receiveMessage')"></div>
-  <div id="envelope2"></div>
+    <div id="envelope1">
+        <div class="heart1" @click="openModal('receiveMessage')"></div>
+    </div>
+    <div class="wing1 right1"></div>
+    <div class="wing1 left1"></div>
+    <div id="envelope2">
+        <div class="heart2" @click="openModal('receiveMessage')"></div>
+    </div>
+    <div class="wing2 right2"></div>
+    <div class="wing2 left2"></div>
   <ui-modal ref="receiveMessage" title="Message"  size="middle" align-top :align-top-margin="200">
             <div>
                 <b-form-textarea id="textarea1"
@@ -82,6 +84,7 @@ export default {
 .right1 {
     position: absolute;
     left:73%;
+    bottom:70%;
     animation:flap11 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
      border-radius: 12px 20px 60px 20px;
@@ -126,6 +129,7 @@ export default {
 .left1 {
     position:absolute;
     left:79.5%;
+    bottom:70%;
     border-radius:12px 20px 20px 60px;
     animation:flap22 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
@@ -173,8 +177,8 @@ export default {
 }
 .heart1{
     position: absolute;
-    left:76.5%;
-    top:12%;
+    left:31%;
+    bottom:20%;
     height: 100px;
     width: 120px;
     z-index:1;
@@ -348,8 +352,8 @@ export default {
 
 .heart2{
     position: absolute;
-    bottom:26%;
-    right:14.5%;
+    bottom:20%;
+    right:21%;
     height: 100px;
     width: 120px;
     z-index:1;
