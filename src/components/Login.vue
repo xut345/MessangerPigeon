@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Welcome to Wandering Messenger Pigeon</h1>
+    <BirdLogo/>
     <b-container>
       <b-row align-h="center" class = "mt-5 ">
         <b-col cols = "7">
@@ -34,6 +35,9 @@
 import LoginService from '@/services/LoginService'
 import BirdLogo from "./BirdLogo"
 export default {
+  components:{
+  BirdLogo
+  },
   methods: {
    async register () {
       console.log("sending registration data: ", this.email, this.password)
