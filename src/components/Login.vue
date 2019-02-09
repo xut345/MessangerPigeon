@@ -4,23 +4,25 @@
     <div class="h1"><BirdLogo></BirdLogo></div>
   </div>
   <div class="login-right">
-    <div class="h2">Log in</div>
-    <div class="form-group">
-      <input type="text" id="Email" placeholder="User name">
-      <label for="Email">User name</label>    
-    </div>
-    <div class="form-group">
-      <input type="password" id="Password" placeholder="Password">
-      <label for="Password">Password</label>    
-    </div>
-    <div class="checkbox-container">
-      <input type="checkbox">
-      <div class="text-checkbox">I agree with the terms of service.</div>
-    </div> 
-    <div class="button-area">
-      <button @click="login" class="btn btn-primary" type = "submit">Login</button>
-      <button @click="register" class="btn btn-secondary">Sign Up</button>
-    </div>
+    <div class="loginBox">
+       <div class="h2">Log in</div>
+       <div class="form-group">
+          <input type="text" id="Email" placeholder="User name">
+         <label for="Email">User name</label>    
+        </div>
+       <div class="form-group">
+          <input type="password" id="Password" placeholder="Password">
+          <label for="Password">Password</label>    
+       </div>
+        <div class="checkbox-container">
+          <input type="checkbox">
+         <div class="text-checkbox">I agree with the terms of service.</div>
+       </div> 
+       <div class="button-area">
+         <button @click="login" class="btn btn-primary" type = "submit">Login</button>
+         <button @click="register" class="btn btn-secondary">Sign Up</button>
+        </div>
+      </div>
   </div>
 </div>
 </template>
@@ -30,6 +32,9 @@ import LoginService from '@/services/LoginService'
 import BirdLogo from "./BirdLogo"
 
 export default {
+  data:{
+    active:true
+  },
   components:{
   BirdLogo
   },
