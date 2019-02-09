@@ -4,7 +4,7 @@
     <div class="h1"><BirdLogo></BirdLogo></div>
   </div>
   <div class="login-right">
-    <div class="loginBox">
+    <div class="loginBox" v-show="showlogin">
        <div class="h2">Log in</div>
        <div class="form-group">
           <input type="text" id="Email" placeholder="User name">
@@ -14,6 +14,25 @@
           <input type="password" id="Password" placeholder="Password">
           <label for="Password">Password</label>    
        </div>
+       <div class="button-area">
+         <button @click="login" class="btn btn-primary" type = "submit">Login</button>
+         <button @click="register" class="btn btn-secondary">Sign Up</button>
+      </div>
+    </div>
+    <div class="registerBox" v-show="showRegister">
+       <div class="h2">Register</div>
+       <div class="form-group">
+          <input type="text" id="Email" placeholder="User name">
+         <label for="Email">User name</label>    
+        </div>
+       <div class="form-group">
+          <input type="password" id="Password" placeholder="Password">
+          <label for="Password">Password</label>    
+       </div>
+       <div class="form-group">
+          <input type="password" id="Password" placeholder="Confirm Password">
+          <label for="Password">Confirm password</label>    
+       </div>
         <div class="checkbox-container">
           <input type="checkbox">
          <div class="text-checkbox">I agree with the terms of service.</div>
@@ -21,8 +40,8 @@
        <div class="button-area">
          <button @click="login" class="btn btn-primary" type = "submit">Login</button>
          <button @click="register" class="btn btn-secondary">Sign Up</button>
-        </div>
       </div>
+    </div>
   </div>
 </div>
 </template>
@@ -32,14 +51,19 @@ import LoginService from '@/services/LoginService'
 import BirdLogo from "./BirdLogo"
 
 export default {
-  data:{
-    active:true
+  data(){
+    return{
+      showlogin:true,
+      showRegister:false
+    }
   },
   components:{
   BirdLogo
   },
   methods: {
    async register () {
+      this.showlogin=false;
+      this.showRegister=true;
       console.log("sending registration data: ", this.email, this.password)
       const response = await LoginService.register({
         email: this.email,
@@ -48,6 +72,8 @@ export default {
       console.log(response.data)
     },
     async login () {
+      this.showlogin=true;
+      this.showRegister=false;
       console.log("sending login data: ", this.email, this.password)
       const response = await LoginService.login({
         email: this.email,
