@@ -14,9 +14,13 @@
           <input type="password" id="Password" placeholder="Password">
           <label for="Password">Password</label>    
        </div>
+       <div class="checkbox-container">
+          <input type="checkbox">
+         <div class="text-checkbox">Remember me</div>
+       </div> 
        <div class="button-area">
          <button @click="login" class="btn btn-primary" type = "submit">Login</button>
-         <button @click="register" class="btn btn-secondary">Sign Up</button>
+         <button @click="showlogin=false,showRegister=true" class="btn btn-secondary">Sign Up</button>
       </div>
     </div>
     <div class="registerBox" v-show="showRegister">
@@ -29,17 +33,13 @@
           <input type="password" id="Password" placeholder="Password">
           <label for="Password">Password</label>    
        </div>
-       <div class="form-group">
-          <input type="password" id="Password" placeholder="Confirm Password">
-          <label for="Password">Confirm password</label>    
-       </div>
         <div class="checkbox-container">
           <input type="checkbox">
          <div class="text-checkbox">I agree with the terms of service.</div>
        </div> 
        <div class="button-area">
-         <button @click="login" class="btn btn-primary" type = "submit">Login</button>
-         <button @click="register" class="btn btn-secondary">Sign Up</button>
+         <button @click="register" class="btn btn-primary" type = "submit">Sign up</button>
+         <button @click="showlogin=true,showRegister=false" class="btn btn-secondary">login</button>
       </div>
     </div>
   </div>
@@ -62,8 +62,6 @@ export default {
   },
   methods: {
    async register () {
-      this.showlogin=false;
-      this.showRegister=true;
       console.log("sending registration data: ", this.email, this.password)
       const response = await LoginService.register({
         email: this.email,
@@ -72,8 +70,6 @@ export default {
       console.log(response.data)
     },
     async login () {
-      this.showlogin=true;
-      this.showRegister=false;
       console.log("sending login data: ", this.email, this.password)
       const response = await LoginService.login({
         email: this.email,
@@ -331,20 +327,26 @@ input[type="checkbox"]:checked:after {
   border-radius: 2px;
   height: 40px;
   display: flex;
-  padding: 0 35px;
   cursor: pointer;
-  font-size: 16px;
   text-transform: uppercase;
   letter-spacing: -0.00933333em;
 }
 
 .btn-primary {
+  font-size: 16px;
+  margin-left:65px;
+  padding: 0 70px;
   color: #fff;
   background: linear-gradient(198.08deg, rgb(108, 207, 247) 45.34%, rgb(108, 207, 247) 224.21%);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
+  font-size: 12px;
+  padding: 0 0px;
+  margin-top:60px;
   color: rgb(108, 207, 247);  
+  background: linear-gradient(198.08deg, rgb(255, 255, 255) 45.34%, rgb(247, 249, 250) 224.21%);
+  
 }
 </style>
