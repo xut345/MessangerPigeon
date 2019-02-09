@@ -182,7 +182,7 @@ var list = [
     id:238285620394583049,
     sent_by:"Steven", 
     created_time:"2019/01/20", 
-    topic:"Hello",
+    topic:"asdas",
     currently_at:"Jay", 
     time_arrived_at_current_user:"2019/01/22", 
     isMultiUser:false,
@@ -231,7 +231,9 @@ var list = [
 
 
 
+var toBePickuPList = {
 
+}
 
 
 

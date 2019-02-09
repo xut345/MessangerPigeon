@@ -1,13 +1,24 @@
-
 import Vue from 'vue'
-import vuex from 'vuex'
-import messages from './modules/messages'
+import Vuex from 'vuex'
+import * as getters from './getters' 
+import * as actions from './actions'
+import * as mutations from './mutations'
+import list from '../mock/messages.js'
 
-Vue.use(vuex);
+Vue.use(Vuex)
+
+const state = {
+    userMessageList:list,
+    toBePickUpMessageList: null,
+
+}
  
-export default new vuex.Store({
-    modules: {
-        messages,
-    },
-    strict: true
+// 注册上面引入的各大模块
+const store = new Vuex.Store({
+    state,    
+    getters,  
+    actions,  
+    mutations  
 })
+ 
+export default store 

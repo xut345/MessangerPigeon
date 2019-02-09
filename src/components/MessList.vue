@@ -4,24 +4,24 @@
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
     </div>
     <div class="mess-list">
-        <div class="mess" v-for="mess in messages" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
+        <div class="mess" v-for="mess in userMessageList" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
     </div>
 </div>
 </template>
 
 <script>
 
-import list from '../mock/messages.js'
-
-console.log(list)
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
     data(){
         return{
-            messages:list,
             switch1:false,
         }
-    }
+    },
+    computed: {
+      ...mapGetters(['userMessageList'])
+  }
 }
 </script>
 

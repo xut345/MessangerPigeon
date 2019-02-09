@@ -5,7 +5,7 @@
         <ui-modal ref="sendMessage" title="New Message"  size="large" align-top :align-top-margin="200">
             <div>
                 <b-form-group label="Title">
-                <b-form-input v-model="title" type="text" placeholder="Enter your name"></b-form-input>
+                <b-form-input v-model="title" type="text" placeholder="Enter your title"></b-form-input>
                 </b-form-group>
                 <b-form-group label="Type">
                 <b-form-radio-group id="btnradios2"
@@ -18,12 +18,12 @@
                 <b-form-group label="Message">
                 <b-form-textarea id="textarea1"
                         v-model="content"
-                        placeholder="Enter something"
+                        placeholder="Enter something..."
                         :rows="10"
                         :max-rows="10">
                 </b-form-textarea>
                 </b-form-group>
-                <b-button  @click="closeModal('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
+                <b-button  @click="sendNewMessageBox('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
             </div>
         </ui-modal>
         <Envelope v-show="show"/>
@@ -32,6 +32,9 @@
 
 <script>
 import Envelope from "./Envelope"
+
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   name: 'MessageBox',
   components:{
@@ -50,6 +53,9 @@ export default {
     }
   },
   methods: {
+    ...mapActions( 
+        ['createNewMessageBox']
+    ),
     openModal(ref) {
         this.$refs[ref].open();
     },
@@ -58,6 +64,34 @@ export default {
     },
     showEnvelope: function(){
         this.show = !this.show;   
+    },
+    sendNewMessageBox(ref){
+        if(this.title.length==0 || this.content.length==0){
+            alert("You have to enter your message title and content!");
+        }
+        else{
+            this.closeModal(ref);
+            var newMess = {
+                id:235446564565,
+                sent_by:"Dehou", 
+                created_time:"2019/02/20", 
+                topic:this.title,
+                currently_at:"Dehou", 
+                time_arrived_at_current_user:"2019/02/20", 
+                isMultiUser:this.selected==='private'?false:true,
+                viewable_by:["Dehou"],
+                messages:[
+                            {
+                                id:23828535436097458,
+                                user:"Dehou", 
+                                created_time:"2019/02/20 14:30:11",
+                                content: this.content
+                            },
+                ]
+            }
+            this.createNewMessageBox(newMess)
+        }
+
     }
   }
 }
