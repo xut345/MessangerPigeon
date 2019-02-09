@@ -18,8 +18,8 @@
       <div class="text-checkbox">I agree with the terms of service.</div>
     </div> 
     <div class="button-area">
-      <button @click="login" class="btn btn-secondary">Login</button>
-      <button @click="register" class="btn btn-primary">Sign Up</button>
+      <button @click="login" class="btn btn-primary" type = "submit">Login</button>
+      <button @click="register" class="btn btn-secondary">Sign Up</button>
     </div>
   </div>
 </div>
