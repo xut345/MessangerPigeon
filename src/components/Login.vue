@@ -27,12 +27,12 @@
         </b-col>
       </b-row>
     </b-container>
-    <img src="@/assets/Carrier-Pigeon.png">
   </div>
 </template>
 
 <script>
 import LoginService from '@/services/LoginService'
+import BirdLogo from "./BirdLogo"
 export default {
   methods: {
    async register () {
