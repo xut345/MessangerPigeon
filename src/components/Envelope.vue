@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class=envelope>
+    <div class="envelope-box">
         <div class="wing1 left1"></div>
         <div class="wing1 right1"></div>
         <div class="wing2 left2"></div>
@@ -45,25 +45,33 @@ export default {
 
 <style lang="scss">
 
-  .envelope{
+  .envelope-box{
       position:fixed;
-      height:600px;
+      height:450px;
       width:600px;
-      right:5%;
-      bottom: 10%;
+      right:2%;
+      top: 2%;
   }
-/* envelope */
-  .envelope1 {
+
+.envelope1, .envelope2 {
   background: white; 
-  top:10%;
   left: 25%;
-  height: 200px;
-  width: 300px;
+  height: 150px;
+  width: 250px;
   position: absolute;
   border-radius:8px;
   overflow:hidden;
   animation: floaty 1s infinite;
+  box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
+
+.envelope1{
+   top:10%;
+  }
+.envelope2 {
+  bottom:10%;
+}
+
 
 @keyframes floaty {
     0% {
@@ -71,7 +79,7 @@ export default {
     }
     
     50% {
-        transform:translate(0, 12px);
+        transform:translate(0, 5px);
     }
 }
 
@@ -79,24 +87,27 @@ export default {
 
 .wing1 {
     background:white;
-     border-radius: 12px 20px 60px 20px;
-     width:100px;
-     height:35px;
+    width:100px;
+    height:35px;
+    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* right wing */
 
 .right1 {
+    background:white;
+    width:100px;
+    height:35px;
     position: absolute;
-    right: 5%;
+    right: 12%;
     top: 20%;
-    animation:flap1 1s infinite;
+    animation:flap 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
-     border-radius: 12px 20px 60px 20px;
+    border-radius: 12px 20px 60px 20px;
     transform:rotate(-10deg);
 }
 
-@keyframes flap1 {
+@keyframes flap {
     0% {
         transform:rotate(-10deg);
     }
@@ -111,22 +122,24 @@ export default {
     background:white;
     width:70%;
     height:80%;
-       border-bottom:3px solid rgba(0,0,0,.08);
+    border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 20px 20px 60px 20px;
     transform:rotate(20deg) translate(-1px,0);
     margin-top:30px;
+    
 }
 
 .right1:after {
-      position:absolute;
+    position:absolute;
     content:'';
     background:white;
     width:40%;
     transform:rotate(29deg) translate(-8px,0);
     height:45%;
-       border-bottom:3px solid rgba(0,0,0,.08);
+    border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 0px 0px 60px 70px;
     margin-top:50px;
+    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* left wing */
@@ -174,6 +187,7 @@ export default {
      transform:translate(164%,0) rotate(-34deg);
      border-radius:0px 0px 70px 60px;
     margin-top:46px;
+    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* heart */
@@ -182,8 +196,8 @@ export default {
 }
 .heart1{
     position: absolute;
-    margin: 20% auto;
-    left: 33%;
+    margin: 10% auto;
+    left: 30%;
     height: 100px;
     width: 120px;
     z-index:1;
@@ -201,7 +215,7 @@ export default {
     left: 50px;
     top: 0;
     border-radius: 50px 50px 6px 6px;
-    background: crimson;
+    background: rgb(201, 56, 75);
     transform: rotate(-45deg);
     transform-origin: 0 100%;
 }
@@ -217,7 +231,7 @@ export default {
     }
     
     50% {
-        transform: scale(.92) translate(0, 12px);
+        transform: scale(.85) translate(0,5px);
     }
     
     100% {
@@ -225,42 +239,22 @@ export default {
     }
 }
 
-/* envelope */
 
-  .envelope2 {
-  background: white; 
-  height: 200px;
-  width: 300px;
-  position: absolute;
-  left: 25%;
-  bottom:10%;
-  border-radius:8px;
-  overflow:hidden;
-  animation: floaty1 1s infinite;
-}
 
-@keyframes floaty1 {
-    0% {
-        transform:translate(0,0);
-    }
-    
-    50% {
-        transform:translate(0, 12px);
-    }
-}
 
 .wing2 {
     background:white;
      border-radius: 12px 20px 60px 20px;
      width:100px;
      height:35px;
+     box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* right wing */
 
 .right2 {
     position:absolute;
-    right:5%;
+    right:12%;
     bottom:28%;
     animation:flap11 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
@@ -299,6 +293,7 @@ export default {
        border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 0px 0px 60px 70px;
     margin-top:50px;
+    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* left wing */
@@ -346,6 +341,7 @@ export default {
      transform:translate(164%,0) rotate(-34deg);
      border-radius:0px 0px 70px 60px;
     margin-top:46px;
+    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 /* heart */
@@ -355,15 +351,14 @@ export default {
 
 .heart2{
     position: absolute;
-    margin: 20% auto;
-    left: 33%;
+    margin:10% auto;
+    left: 30%;
     height: 100px;
     width: 120px;
     z-index:1;
     animation: heart2 1s infinite;
     transform:scale(.8);
     transition:.6s;
-    margin-top:60px;
     
 }
 .heart2:before,
@@ -375,7 +370,7 @@ export default {
     left: 50px;
     top: 0;
     border-radius: 50px 50px 6px 6px;
-    background: orange;
+    background: rgb(55, 161, 231);
     transform: rotate(-45deg);
     transform-origin: 0 100%;
 }
@@ -391,7 +386,7 @@ export default {
     }
     
     50% {
-        transform: scale(.92) translate(0, 12px);
+        transform: scale(.85) translate(0, 5px);
     }
     
     100% {

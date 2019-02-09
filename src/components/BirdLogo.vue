@@ -1,0 +1,406 @@
+<template>
+    <div>
+      <div class="globe" >
+        <div class="bird">
+          <div class="body">
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="beak"><div></div></div>
+            <div class="feet"></div>
+            <div class="wire"></div>
+          </div>
+          <div class="hills"></div>
+          <div class="cloud"></div>
+          <div class="cloud small"></div>
+        </div>
+      </div>
+
+    </div>
+
+
+</template>
+
+<script>
+
+export default {
+  
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style lang="scss" scoped>
+
+$birdColor: #11e7d7;
+$birdColor2: #31bfae;
+$birdColor3: #01c7be;
+$feetColor: #f8c14d;
+$beakColor: #f7d35d;
+$beakColor2: #eb9f2d;
+
+$birdColor3: #01c7be;
+
+// Storyboard Timeline
+$timeline: (
+ 'begin'         : 0s,
+ 'eye-p0-1'      : 0.4s,
+ 'eye-p1-1'		 : 0.4s,
+ 'eye-p4-1'      : 1.8s,
+ 'eye-p3-1'      : 0.4s,
+ 'eye-p4-2'      : 1s,
+ 'eye-p2-1'      : 0.1s,
+ 'end'           : 0.4s
+);
+
+
+// $totaltime:						Total of all timecodes in $timeline
+// $timelineAccumulated:	Accumulated timeline map based on $timeline
+$totaltime: 0s;
+$timelineAccumulated: ();
+@each $key, $time in $timeline {
+	$totaltime: $totaltime + $time;
+	$timelineAccumulated: map-merge($timelineAccumulated, ($key : $totaltime) );
+}
+
+// Timecode to Percent function
+// Params:
+// 	$key:			key/position in timeline
+// 	$offset:	optional offset to add to time from timeline (use negative number to subtract)
+// Return: 		Percentage value of keyposition in timeline.
+@function tp($key, $offset: 0s) {
+	@return (map-get($timelineAccumulated, $key) + $offset) / $totaltime * 100%;
+}
+
+
+@keyframes eyes {
+	#{tp('begin')},
+	#{tp('eye-p0-1')},
+    #{tp('end')} {
+   	top: -50px;
+	}
+	#{tp('eye-p1-1')} {
+   	top: -45px;
+	}
+	#{tp('eye-p2-1')} {
+   	top: -20px;
+	}
+	#{tp('eye-p4-1')},
+	#{tp('eye-p4-2')} {
+   	top: -15px;
+	}
+	#{tp('eye-p3-1')} {
+    top: -25px;
+	}
+}
+@keyframes wings {
+	#{tp('begin')},
+	#{tp('eye-p4-2')},
+  #{tp('end')} {
+		top: 70px;
+	}
+	#{tp('eye-p2-1')} {
+		top: 60px;
+	}
+}
+
+@keyframes feet {
+	#{tp('begin')},
+	#{tp('eye-p4-2')},
+  #{tp('end')} {
+		top: -2px;
+	}
+	#{tp('eye-p2-1')} {
+		top: 0px;
+	}
+}
+@keyframes cloud {
+	0% {
+		left: -140px;
+	}
+	100% {
+		left: 280px;
+	}
+}
+
+
+
+.globe:hover{
+  border: 20px solid #ffffff;
+  cursor: pointer;
+  background: #f59bc5;
+}
+
+.globe {
+  transition: border 1s;
+	bottom: 30px;
+  left: 330px;
+	position: fixed;
+	display: inline-block;
+	text-align: left;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	border: 20px solid #fff0ea;
+	box-sizing: border-box;
+	background: transparent;
+	overflow: hidden;
+	box-shadow: inset 0 0 80px rgba(0,0,0,.5),
+										0 0 20px rgba(0,0,0,.3);
+	&:before, &:after {
+		position: absolute;
+		content: "";
+ 		box-sizing: border-box;
+		border-radius: 50%;
+		z-index: 10;
+	}
+	&:before {
+		height: 94%;
+		width: 94%;
+		top:3%;
+		right: 3%;
+		border: 10px solid transparent;
+		border-right-color: rgba(255,255,255,.3);
+		border-right-width: 10px;
+		border-right-style: solid;
+
+	}
+	&:after {
+		top: 50px;
+		right: 65px;
+		width: 10px;
+		height: 10px;
+		background: rgba(255,255,255,.3);
+  }
+	.bird {
+		position: absolute;
+		z-index: 1;
+		left: 45px;
+		top: 40px;
+		.body {
+			position: absolute;
+			width: 125px;
+			height: 136px;
+			border-radius: 50%;
+			background-clip: padding-box;
+			background-color: $birdColor;
+			box-shadow: inset 0 0 80px rgba(0,0,0,.3);
+			&:before, &:after {
+				position: absolute;
+				content: "";
+				z-index: -1;
+				width: 26px;
+				height: 53px;
+				border-radius: 50%;
+				background-color: $birdColor;
+				box-shadow: inset 0 0 13px rgba(0,0,0,.3);
+				top: 70px;
+				animation: wings $totaltime linear infinite;
+			}
+			&:before {
+				left: 0;
+			}
+			&:after {
+				right: 0;
+		  }
+			.eye {
+				position: absolute;
+				z-index: 1;
+				overflow: hidden;
+				width: 36px;
+				height: 36px;
+				top:28px;
+				border-radius: 50%;
+				background-color: #fff;
+				border: 1px solid $birdColor3;
+				box-shadow: inset 0 0 0 1px $birdColor3;
+				&:before, &:after {
+					position: absolute;
+					content: "";
+				}
+				&:before {
+					width: 18px;
+					height: 18px;
+					border-radius: 50%;
+					background-color: #000;
+					top: 20px;
+				}
+				&:after {
+					width: 200px;
+					height: 200px;
+					background: radial-gradient(ellipse at center,
+					rgba(109,0,25,0) 0%,
+					rgba(130,1,31,0) 35%,
+					$birdColor3 36%,
+					$birdColor2 100%);
+					animation: eyes $totaltime linear infinite;
+				}
+				&.left {
+					left: 15px;
+					&:before {
+						left: 20px;
+					}
+					&:after {
+		 				left: -60px;
+		    		top: -45px;
+					}
+				}
+				&.right {
+					right: 15px;
+					&:before {
+						right: 20px;
+					}
+					&:after {
+		 				right: -60px;
+		    		top: -45px;
+					}
+				}
+			}
+			.beak {
+				position: absolute;
+				z-index: 1;
+				width: 21px;
+				height: 25px;
+				top: 70px;
+				left: 67px;
+				border-radius: 50%;
+				&:before {
+						position: absolute;
+						content: "";
+						width: inherit;
+						height: inherit;
+						top: -5px;
+            left:-15px;
+						border-radius: 50%;
+						background: $beakColor2;
+				}
+				
+				div {
+					position: absolute;
+					width: 23px;
+					height: 23px;
+					top: -8px;
+					left: -15px;
+					border-radius: 50% 60% 50%  40%;
+					background-clip: padding-box;
+					background-color: $beakColor;
+					transform: rotate(-45deg);
+					&:before {
+						position: absolute;
+						content: "";
+						transform: rotate(45deg);
+						width: 9px;
+						height: 8px;
+						top: 4px;
+						left: 7px;
+						border-radius: 50%;
+						background-color: #fff;
+					}
+				}
+			}
+			.feet {
+				position: absolute;
+				bottom: 8px;
+				width: 100%;
+				&:before, &:after {
+					position: absolute;
+					content: "";
+					width: 15px;
+					height: 11px;
+					border-radius: 50%;
+					background-color: $feetColor;
+					box-shadow: inset 0 0 12px rgba(0,0,0,.2);
+					animation: feet $totaltime linear infinite;
+				}
+				&:before {
+					left: 40px;
+				}
+				&:after {
+					right: 40px;
+				}
+			}
+		}
+	}
+	.wire {
+		position: absolute;
+		z-index: -1;
+		width: 260px;
+		height: 200px;
+		left: -70px;
+		top: -60px;
+		border-radius: 50%;
+		border: 3px solid transparent;
+		border-bottom-color: rgb(87, 56, 42);
+	}
+	.hills {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		border-radius: 30%;
+		top: 150px;
+		left: 60px;
+		transform: rotate(45deg);
+		background: radial-gradient(ellipse at top left, rgba(170,217,93,1) 0%,rgba(187,195,105,1) 100%);
+		box-shadow: inset 5px 0 12px rgba(0,0,0,.2);
+		&:before, &:after {
+			position: absolute;
+			content: "";
+			width: 178px;
+			height: 90px;
+			border-radius: 50%;
+			background: inherit;
+			box-shadow: inherit;
+		}
+		&:before {
+			left: -90px;
+			top: 30px;
+			z-index: -1;
+			transform: rotate(-20deg);
+		}
+		&:after {
+			left: 0px;
+			top: -55px;
+			transform: rotate(120deg);
+		}
+	}
+
+	.cloud {
+		position: absolute;
+		width: 70px;
+		height: 24px;
+		background: linear-gradient(to bottom,
+								rgba(242,249,254,1) 5%,
+								rgba(214,240,253,1) 100%);
+		border-radius: 20px;
+		top:0px;
+		z-index: -1;
+		animation: cloud $totaltime*2 linear infinite;
+		&.small {
+			top:-50px;
+			transform: scale(.6);
+			animation-delay: -$totaltime/3;
+			animation-duration: $totaltime*3;
+		}
+		&:before, &:after {
+			position: absolute;
+			content: "";
+			background: inherit;
+			z-index: -1;
+		}
+		&:before {
+			width: 36px;
+			height: 36px;
+			top: -18px;
+			right: 10px;
+			border-radius: 40px;
+		}
+		&:after {
+			width: 20px;
+			height: 20px;
+			top: -10px;
+			left: 10px;
+			border-radius: 20px;
+		}
+	}
+}
+
+
+</style>
