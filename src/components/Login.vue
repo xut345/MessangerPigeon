@@ -176,6 +176,8 @@ input:placeholder-shown  + label {
   overflow: hidden;
   position: relative;
   background: #ffffff;
+  border-radius:8px;
+  box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
 }
 
 .login-left {
