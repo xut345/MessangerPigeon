@@ -15,12 +15,17 @@
 
 import Profile from "./components/Profile"
 import MessList from "./components/MessList"
-
+console.log(this.$store)
 export default {
   name: 'App',
   components:{
     Profile,
     MessList
+  },
+  computed: {
+      count(){
+          return this.$store.state.count;
+      }
   }
 }
 </script>
