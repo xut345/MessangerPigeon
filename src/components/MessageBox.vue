@@ -92,6 +92,8 @@ export default {
                 ]
             }
             this.createNewMessageBox(newMess)
+            this.title = ''
+            this.content = ''
         }
 
     }

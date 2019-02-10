@@ -6,10 +6,10 @@
         <div class="wing2 left2"></div>
         <div class="wing2 right2"></div>
         <div class="envelope1">
-            <div class="heart1" @click="openPrivateMessageBox('receiveMessage')"></div>
+            <abbr title="Private Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')"></div></abbr>
         </div>
         <div class="envelope2">
-            <div class="heart2" @click="openPublicMessageBox('receiveMessage')"></div>
+            <abbr title="Public Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')"></div></abbr>
         </div>
     </div>
     <ui-modal ref="receiveMessage" title= "New Message"  size="large" align-top :align-top-margin="100">

@@ -10,9 +10,8 @@ Vue.use(Vuex)
 const state = {
     userMessageList:list,
     toBePickUpMessageList: null,
-
 }
- 
+
 // 注册上面引入的各大模块
 const store = new Vuex.Store({
     state,    
@@ -20,5 +19,5 @@ const store = new Vuex.Store({
     actions,  
     mutations  
 })
- 
+
 export default store 
