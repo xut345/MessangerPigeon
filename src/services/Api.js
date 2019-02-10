@@ -1,6 +1,7 @@
 import axios from 'axios'
 export default () => {
+    console.log(process.env.DEMO_GREETING);
     return axios.create({
-        baseURL: process.env.API_URL || 'http://localhost:2091'
+        baseURL: 'http://localhost:2091'
     })
 }

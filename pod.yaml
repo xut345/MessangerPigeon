@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+spec:
+  containers:
+  - name: web
+    image: gcr.io/formidable-gate-221816/web
+    env:
+    - name: DEMO_GREETING
+      value: "Hello from the environment"
