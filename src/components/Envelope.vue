@@ -6,30 +6,44 @@
         <div class="wing2 left2"></div>
         <div class="wing2 right2"></div>
         <div class="envelope1">
-            <div class="heart1" @click="openModal('receiveMessage')"></div>
+            <div class="heart1" @click="openPrivateMessageBox('receiveMessage')"></div>
         </div>
         <div class="envelope2">
-            <div class="heart2" @click="openModal('receiveMessage')"></div>
+            <div class="heart2" @click="openPublicMessageBox('receiveMessage')"></div>
         </div>
     </div>
-  <ui-modal ref="receiveMessage" title="Message title"  size="middle" align-top :align-top-margin="200">
-            <div>
-                <b-form-text id="textarea1"><h2>Hello!</h2></b-form-text>
-                <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
-                <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
-            </div>
-        </ui-modal>
+    <ui-modal ref="receiveMessage" title= "New Message"  size="large" align-top :align-top-margin="100">
+        <div>
+            <b-form-text id="textarea1">
+                <div class="message-topic">{{messageBox==null?"":messageBox.topic}}</div>
+                
+                <div v-for="mess in messageBox==null?null:messageBox.messages" v-bind:key="mess.id">
+                <div class="message-bar"  >{{mess.content}}</div>
+                <div class="message-user"> From {{mess.user}}</div>
+                </div>
+
+                
+            </b-form-text>
+        </div>
+        <div class="modal-fun">
+            <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
+            <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+        </div>
+    </ui-modal>
   
 </div>
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
+
 export default {
   name: 'Envelope',
   components:{
   },
   data(){
     return{
+        messageBox:null
     }
   },
   methods: {
@@ -38,12 +52,23 @@ export default {
     },
     closeModal(ref) {
         this.$refs[ref].close();
+    },
+    openPrivateMessageBox(ref){
+        this.messageBox=this.toBePickUpMessageList.private
+        this.openModal(ref)
+    },
+    openPublicMessageBox(ref){
+        this.messageBox=this.toBePickUpMessageList.public
+        this.openModal(ref)
+    },
+  },
+  computed: {
+        ...mapGetters(['toBePickUpMessageList'])
     }
-  }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
   .envelope-box{
       position:fixed;
@@ -394,6 +419,40 @@ export default {
     }
 }
 
+.message-topic{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-bottom: 1px solid #eee
+}
 
+.message-bar, .message-bar-right{
+    width: 350px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+
+}
+
+.message-bar-right{
+    float: right;
+}
+
+.modal-fun{
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+}
+
+.message-user{
+    margin-left: 10px;
+    color: #bbb;
+}
 
 </style>

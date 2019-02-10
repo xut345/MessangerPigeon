@@ -4,3 +4,7 @@ export function createNewMessageBox({commit}, messageBox) {
 }
  
 
+export function pickNewMessageBox({commit}, messageBox) {
+    return commit ('pickNewMessageBox')
+}
+ 

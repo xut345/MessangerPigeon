@@ -1,7 +1,8 @@
 <template>
     <div>
       <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
-      <ui-button class="self-btn"  v-on:click="showEnvelope"> <div class="receive-btn">  RECEIVE </div> </ui-button>
+      <ui-button class="self-btn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
+      
         <ui-modal ref="sendMessage" title="New Message"  size="large" align-top :align-top-margin="200">
             <div>
                 <b-form-group label="Title">
@@ -54,7 +55,7 @@ export default {
   },
   methods: {
     ...mapActions( 
-        ['createNewMessageBox']
+        ['createNewMessageBox', 'pickNewMessageBox']
     ),
     openModal(ref) {
         this.$refs[ref].open();
@@ -62,7 +63,8 @@ export default {
     closeModal(ref) {
         this.$refs[ref].close();
     },
-    showEnvelope: function(){
+    receiveRandomMessageBox: function(){
+        this.pickNewMessageBox();
         this.show = !this.show;   
     },
     sendNewMessageBox(ref){
@@ -94,11 +96,12 @@ export default {
 
     }
   }
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 .self-btn{
     background:#f8f9fa !important;
     width:0px;
