@@ -1,6 +1,6 @@
 FROM node:10 as build
 WORKDIR /usr/src/app
-COPY package.json ./
+COPY package.json /build /src /config ./
 RUN npm install --only=production
 RUN npm run build
 
