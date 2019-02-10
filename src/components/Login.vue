@@ -7,11 +7,11 @@
     <div class="loginBox" v-show="showlogin">
        <div class="h2">Log in</div>
        <div class="form-group">
-          <input type="text" id="Email" placeholder="User name">
+          <input type="text" id="Email" v-model = "email" placeholder="User name">
          <label for="Email">User name</label>    
         </div>
        <div class="form-group">
-          <input type="password" id="Password" placeholder="Password">
+          <input type="password" id="Password" v-model = "password" placeholder="Password">
           <label for="Password">Password</label>    
        </div>
        <div class="checkbox-container">
@@ -26,11 +26,11 @@
     <div class="registerBox" v-show="showRegister">
        <div class="h2">Register</div>
        <div class="form-group">
-          <input type="text" id="Email" placeholder="User name">
+          <input type="text" id="Email" v-model = "email" placeholder="User name">
          <label for="Email">User name</label>    
         </div>
        <div class="form-group">
-          <input type="password" id="Password" placeholder="Password">
+          <input type="password" id="Password" v-model = "password" placeholder="Password">
           <label for="Password">Password</label>    
        </div>
         <div class="checkbox-container">
