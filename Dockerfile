@@ -1,6 +1,7 @@
 FROM node:10 as build
 WORKDIR /usr/src/app
 COPY package.json ./
+RUN npm install --only=production
 RUN npm run build
 
 FROM nginx:1.12-alpine
