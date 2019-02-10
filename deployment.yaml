@@ -23,7 +23,7 @@ spec:
       - name: web
         image: gcr.io/formidable-gate-221816/web
         ports:
-          - containerPort: 8080
+        - containerPort: 8080
         env:
-          - name: DEMO_GREETING
-            value: "Hello from the environment"
+        - name: DEMO_GREETING
+          value: "Hello from the environment"
