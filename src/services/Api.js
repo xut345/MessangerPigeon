@@ -1,7 +1,6 @@
 import axios from 'axios'
-
 export default () => {
     return axios.create({
-        baseURL: 'http://localhost:2091'
+        baseURL: process.env.API_URL || 'http://localhost:2091'
     })
 }
