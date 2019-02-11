@@ -7,16 +7,14 @@
     <div class="loginBox" v-show="showlogin">
        <div class="h2">Log in</div>
        <div class="form-group">
-          <input type="text" id="Email" v-model = "email" placeholder="User name">
-         <label for="Email">User name</label>    
+          <input type="text" id="Email" v-model = "email" placeholder="User name"> 
         </div>
        <div class="form-group">
-          <input type="password" id="Password" v-model = "password" placeholder="Password">
-          <label for="Password">Password</label>    
+          <input type="password" id="Password" v-model = "password" placeholder="Password"> 
        </div>
        <div class="checkbox-container">
-          <input type="checkbox">
-         <div class="text-checkbox">Remember me</div>
+          <!-- <input type="checkbox"> -->
+         <!-- <div class="text-checkbox">Remember me</div> -->
        </div> 
        <div class="button-area">
          <button @click="login" class="btn btn-primary" type = "submit">Login</button>
@@ -27,15 +25,13 @@
        <div class="h2">Register</div>
        <div class="form-group">
           <input type="text" id="Email" v-model = "email" placeholder="User name">
-         <label for="Email">User name</label>    
         </div>
        <div class="form-group">
           <input type="password" id="Password" v-model = "password" placeholder="Password">
-          <label for="Password">Password</label>    
        </div>
         <div class="checkbox-container">
-          <input type="checkbox">
-         <div class="text-checkbox">I agree with the terms of service.</div>
+          <!-- <input type="checkbox"> -->
+         <!-- <div class="text-checkbox">I agree with the terms of service.</div> -->
        </div> 
        <div class="button-area">
          <button @click="register" class="btn btn-primary" type = "submit">Sign up</button>
@@ -51,14 +47,14 @@ import LoginService from '@/services/LoginService'
 import BirdLogo from "./BirdLogo"
 
 export default {
-  data(){
-    return{
+  data() {
+    return {
       showlogin:true,
       showRegister:false
     }
   },
-  components:{
-  BirdLogo
+  components: {
+    BirdLogo
   },
   methods: {
    async register () {
@@ -67,7 +63,6 @@ export default {
         email: this.email,
         password: this.password
       })
-      console.log(response.data)
     },
     async login () {
       console.log("sending login data: ", this.email, this.password)
@@ -75,15 +70,14 @@ export default {
         email: this.email,
         password: this.password
       })
-      console.log(response.data)
     },
   },
-  mounted(){
+  mounted() {
     var openLoginRight = document.querySelector('.h1');
     var loginWrapper = document.querySelector('.login-wrapper');
-    openLoginRight.addEventListener('click', function(){
-    loginWrapper.classList.toggle('open'); 
-});
+    openLoginRight.addEventListener('click', function() {
+      loginWrapper.classList.toggle('open'); 
+    });
   }
 }
 </script>
@@ -335,7 +329,7 @@ input[type="checkbox"]:checked:after {
 .btn-primary {
   font-size: 16px;
   margin-left:65px;
-  padding: 0 70px;
+  padding: 6px 70px;
   color: #fff;
   background: linear-gradient(198.08deg, rgb(108, 207, 247) 45.34%, rgb(108, 207, 247) 224.21%);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
