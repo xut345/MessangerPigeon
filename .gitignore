@@ -60,10 +60,6 @@ typings/
 # next.js build output
 .next
 
-<<<<<<< HEAD
-# build directory
-build/
-=======
-# package-lock.json
-package-lock.json
->>>>>>> parent of d2418c8a... removed build directory
+dist/
+
+.DS_Store
