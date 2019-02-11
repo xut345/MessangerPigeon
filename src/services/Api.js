@@ -1,7 +1,6 @@
 import axios from 'axios'
 export default () => {
-    console.log(process.env);
     return axios.create({
-        baseURL: 'http://localhost:2091'
-    })
+        baseURL: process.env.NODE_ENV === 'production' ? 'http://35.224.82.158:8080' : 'http://localhost:2091'
+    });
 }
