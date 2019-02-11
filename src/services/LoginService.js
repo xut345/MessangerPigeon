@@ -10,9 +10,13 @@ export default {
           });
     },
     login (credentials) {
-        return Api().post('login', credentials).then(function (response) {
-            router.push({ name: 'MessageFrame' })
-          }).catch(function (error) {
+        return Api().post('login', credentials)
+        .then(response => {
+          console.log(response)
+
+      })
+      .then(  router.push({ name: 'MessageFrame' }))          
+       .catch(function (error) {
             console.log(error)
           });
     }
