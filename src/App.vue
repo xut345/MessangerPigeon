@@ -2,7 +2,11 @@
   <div class="root"> 
     <div id="left"> 
       <Profile/>
+<<<<<<< HEAD
       <MessList/> 
+=======
+      <!-- <MessList/>  move to iteration2 -->
+>>>>>>> parent of 04e2de9f... fix merge problem
       
     </div> 
     <div id="right">
