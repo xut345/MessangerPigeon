@@ -1,5 +1,6 @@
 <template>
-  <div class="login-wrapper">
+<div class="body">
+ <div class="login-wrapper">
   <div class="login-left">
     <div class="h1"><BirdLogo></BirdLogo></div>
   </div>
@@ -7,10 +8,10 @@
     <div class="loginBox" v-show="showlogin">
        <div class="h2">Log in</div>
        <div class="form-group">
-          <input type="text" id="Email" v-model = "email" placeholder="User name"> 
+          <input type="text" id="email1" v-model = "email" placeholder="User name"> 
         </div>
        <div class="form-group">
-          <input type="password" id="Password" v-model = "password" placeholder="Password"> 
+          <input type="password" id="password1" v-model = "password" placeholder="Password">
        </div>
        <div class="checkbox-container">
           <!-- <input type="checkbox"> -->
@@ -24,10 +25,10 @@
     <div class="registerBox" v-show="showRegister">
        <div class="h2">Register</div>
        <div class="form-group">
-          <input type="text" id="Email" v-model = "email" placeholder="User name">
+          <input type="text" id="email2" v-model = "email" placeholder="User name">
         </div>
        <div class="form-group">
-          <input type="password" id="Password" v-model = "password" placeholder="Password">
+          <input type="password" id="password2" v-model = "password" placeholder="Password">
        </div>
         <div class="checkbox-container">
           <!-- <input type="checkbox"> -->
@@ -40,6 +41,8 @@
     </div>
   </div>
 </div>
+</div>
+
 </template>
 
 <script>
@@ -50,7 +53,9 @@ export default {
   data() {
     return {
       showlogin:true,
-      showRegister:false
+      showRegister:false,
+      email:'',
+      password:'',
     }
   },
   components: {
@@ -83,7 +88,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 
 * {
@@ -91,13 +96,13 @@ export default {
 }
 
 html, 
-body {
+.body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-body {
+.body {
   font-family: 'Lato', sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
@@ -113,6 +118,8 @@ body {
           align-items: center;
   background: linear-gradient(243.87deg, rgb(58, 194, 248) 30.6%, #ffffff 130.6%);
   overflow: hidden;
+  width: 100%;
+  padding: 250px;
 }
 
 input {
