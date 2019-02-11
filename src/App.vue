@@ -2,7 +2,7 @@
   <div class="root"> 
     <div id="left"> 
       <Profile/>
-      <MessList/> 
+      <!-- <MessList/>  move to iteration2 -->
       
     </div> 
     <div id="right">
