@@ -14,8 +14,8 @@
           <input type="password" id="password1" v-model = "password" placeholder="Password">
        </div>
        <div class="checkbox-container">
-          <!-- <input type="checkbox"> -->
-         <!-- <div class="text-checkbox">Remember me</div> -->
+          <!-- <input type="checkbox">
+         <div class="text-checkbox">Remember me</div> -->
        </div> 
        <div class="button-area">
          <button @click="login" class="btn btn-primary" type = "submit">Login</button>
@@ -31,8 +31,8 @@
           <input type="password" id="password2" v-model = "password" placeholder="Password">
        </div>
         <div class="checkbox-container">
-          <!-- <input type="checkbox"> -->
-         <!-- <div class="text-checkbox">I agree with the terms of service.</div> -->
+          <!-- <input type="checkbox">
+         <div class="text-checkbox">I agree with the terms of service.</div> -->
        </div> 
        <div class="button-area">
          <button @click="register" class="btn btn-primary" type = "submit">Sign up</button>
@@ -194,6 +194,7 @@ input:placeholder-shown  + label {
   letter-spacing: -0.00933333em;
   font-weight: 600;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .login-wrapper {
