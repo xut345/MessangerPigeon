@@ -8,14 +8,14 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/MessageFrame',
-      name: 'MessageFrame',
-      component: MessageFrame
-    },
-    {
       path: '/',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/MessageFrame',
+      name: 'MessageFrame',
+      component: MessageFrame
     }
   ]
 })
