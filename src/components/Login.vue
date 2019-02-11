@@ -48,6 +48,8 @@
 <script>
 import LoginService from '@/services/LoginService'
 import BirdLogo from "./BirdLogo"
+import {mapActions, mapGetters} from 'vuex'
+import router from '@/router/index'
 
 export default {
   data() {
@@ -61,20 +63,20 @@ export default {
   components: {
     BirdLogo
   },
+
   methods: {
    async register () {
-      console.log("sending registration data: ", this.email, this.password)
       const response = await LoginService.register({
         email: this.email,
         password: this.password
       })
     },
     async login () {
-      console.log("sending login data: ", this.email, this.password)
       const response = await LoginService.login({
         email: this.email,
         password: this.password
       })
+
     },
   },
   mounted() {

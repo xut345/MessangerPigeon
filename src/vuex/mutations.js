@@ -1,5 +1,21 @@
 
 
+export const login = (state, user) => {
+    state.user = user
+}
+
+export const logout = (state) => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    state.user = null,
+    state.token = null
+}
+
+
+export const setToken = (state, token) => {
+    state.token = token
+}
+
 export const createNewMessageBox = (state, messageBox) => {
     state.userMessageList = state.userMessageList.concat(messageBox)
 }

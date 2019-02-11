@@ -3,7 +3,7 @@
     <div id="left"> 
       <Profile/>
       <!-- <MessList/>  move to iteration2 -->
-      
+      <div class="left-fun">  <button class="btn btn-danger" @click="userLogout()">Logout</button> </div>
     </div> 
     <div id="right">
       <MessageFrameBackground/>
@@ -18,7 +18,8 @@
 import MessageFrameBackground from "./MessageFrameBackground"
 import BirdButton from "./BirdButton"
 import Profile from "./Profile"
-
+import router from '@/router/index'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
   name: 'MessageFrame',
@@ -27,6 +28,15 @@ export default {
     BirdButton,
     Profile,
   },
+  methods:{
+    ...mapActions( 
+        ['logout']
+    ),
+    userLogout(){
+      this.logout();
+      router.push({ name: 'Login' })
+    }
+  }
 }
 </script>
 
@@ -55,5 +65,15 @@ body{
   position: relative;overflow: hidden;
   height: 100%;
   width: (100%-300px);
+}
+
+.left-fun{
+  position: fixed;
+  bottom: 0;
+  padding-left: 110px;
+  padding-top: 20px;
+  height: 80px;
+  width: 100%;
+  border-top: 1px solid #0587a846;
 }
 </style>

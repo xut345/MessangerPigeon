@@ -10,6 +10,8 @@ Vue.use(Vuex)
 const state = {
     userMessageList:list,
     toBePickUpMessageList: null,
+    user:localStorage.getItem('user'),
+    token:localStorage.getItem('token')
 }
 
 // 注册上面引入的各大模块
