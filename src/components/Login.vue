@@ -11,11 +11,11 @@
           <input type="text" id="email1" v-model = "email" placeholder="User name"> 
         </div>
        <div class="form-group">
-          <input type="password" id="password1" v-model = "password" placeholder="Password"> 
+          <input type="password" id="password1" v-model = "password" placeholder="Password">
        </div>
        <div class="checkbox-container">
-          <!-- <input type="checkbox"> -->
-         <!-- <div class="text-checkbox">Remember me</div> -->
+          <!-- <input type="checkbox">
+         <div class="text-checkbox">Remember me</div> -->
        </div> 
        <div class="button-area">
          <button @click="login" class="btn btn-primary" type = "submit">Login</button>
@@ -31,8 +31,8 @@
           <input type="password" id="password2" v-model = "password" placeholder="Password">
        </div>
         <div class="checkbox-container">
-          <!-- <input type="checkbox"> -->
-         <!-- <div class="text-checkbox">I agree with the terms of service.</div> -->
+          <!-- <input type="checkbox">
+         <div class="text-checkbox">I agree with the terms of service.</div> -->
        </div> 
        <div class="button-area">
          <button @click="register" class="btn btn-primary" type = "submit">Sign up</button>
@@ -42,7 +42,7 @@
   </div>
 </div>
 </div>
- 
+
 </template>
 
 <script>
@@ -100,6 +100,7 @@ export default {
 html, 
 .body {
   margin: 0;
+  padding: 0;
   height: 100%;
 }
 
@@ -120,8 +121,7 @@ html,
   background: linear-gradient(243.87deg, rgb(58, 194, 248) 30.6%, #ffffff 130.6%);
   overflow: hidden;
   width: 100%;
-    padding: 250px;
-
+  padding: 250px;
 }
 
 input {
@@ -196,6 +196,7 @@ input:placeholder-shown  + label {
   letter-spacing: -0.00933333em;
   font-weight: 600;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .login-wrapper {

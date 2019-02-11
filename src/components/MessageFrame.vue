@@ -1,5 +1,5 @@
 <template>
-  <div class="root"> 
+<div class="root"> 
     <div id="left"> 
       <Profile/>
       <!-- <MessList/>  move to iteration2 -->
@@ -47,7 +47,6 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 #left{
   float: left;
   width: 300px;
