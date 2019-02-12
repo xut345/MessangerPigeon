@@ -4,7 +4,8 @@ import store from '@/vuex/store'
 
 export default {
     register (credentials) {
-        return Api().post('register', credentials).then(function (response) {
+        return Api().post('register', credentials)
+        .then((response) => {
           console.log(response)
             router.push({ name: 'MessageFrame' })
           }).catch(function (error) {
@@ -23,12 +24,10 @@ export default {
             router.push({ name: 'MessageFrame' })
 
           }
-          else{
-            alert("Your username or password is wrong.")
-          }
           
       })     
       .catch(function (error) {
+        alert("Your username or password is wrong.")
           console.log(error)
         });
     }
