@@ -16,11 +16,32 @@
         <div>
             <b-form-text id="textarea1">
                 <div class="message-topic">{{messageBox==null?"":messageBox.topic}}</div>
+
+                <b-container v-for="mess in messageBox==null?null:messageBox.messages" v-bind:key="mess.id">
+                    <div v-if="mess.user==='Steven'">
+                    <b-row >
+                        <b-col></b-col>
+                        <b-col><div class="message-bar-right"  >{{mess.content}}</div></b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col></b-col>
+                        <b-col><div class="message-user"> From {{mess.user}}</div></b-col>
+                    </b-row>
+                    </div>
+
+                    <div v-if="mess.user!=='Steven'">
+                    <b-row >
+                        <b-col> <div class="message-bar"  >{{mess.content}}</div> </b-col>
+                        <b-col></b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col> <div class="message-user-right"> From {{mess.user}}</div> </b-col>
+                        <b-col></b-col>
+                    </b-row>
+                    </div>
+                </b-container>
                 
-                <div v-for="mess in messageBox==null?null:messageBox.messages" v-bind:key="mess.id">
-                <div class="message-bar"  >{{mess.content}}</div>
-                <div class="message-user"> From {{mess.user}}</div>
-                </div>
+                
 
                 
             </b-form-text>
@@ -429,20 +450,22 @@ export default {
 }
 
 .message-bar, .message-bar-right{
-    width: 350px;
-    height: auto;
     background-color: rgb(255, 255, 255);
     font-size: 20px;
     margin-top: 20px;
     border-radius: 10px;
     padding: 10px;
     border: 1px solid #ddd;
-
+    float: left;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 #c9c9c9b4, 0 2px 5px 0 #f1f1f1b4;
 }
-
 .message-bar-right{
-    float: right;
+    background: rgb(4, 158, 196);
+    color: white
 }
+
 
 .modal-fun{
     margin-top: 40px;
@@ -451,8 +474,38 @@ export default {
 }
 
 .message-user{
-    margin-left: 10px;
     color: #bbb;
+    float: right;
 }
+
+.message-user-right{
+    color: #bbb;
+    float: left;
+}
+
+.message-bar-box{
+    width: 100%;
+}
+
+
+.message-bar-null{
+    width: 50%;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    float: left;
+    color: transparent
+}
+
+.message-user-null{
+    color: #bbb;
+    width: 50%;
+    float: left;
+}
+
+
 
 </style>

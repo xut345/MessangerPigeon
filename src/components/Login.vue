@@ -18,7 +18,7 @@
          <div class="text-checkbox">Remember me</div> -->
        </div> 
        <div class="button-area">
-         <button @click="login" class="btn btn-primary" type = "submit">Login</button>
+         <button @click="login" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Login</button>
          <button @click="showlogin=false,showRegister=true" class="btn btn-secondary">Sign Up</button>
       </div>
     </div>
@@ -35,7 +35,7 @@
          <div class="text-checkbox">I agree with the terms of service.</div> -->
        </div> 
        <div class="button-area">
-         <button @click="register" class="btn btn-primary" type = "submit">Sign up</button>
+         <button @click="register" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Sign up</button>
          <button @click="showlogin=true,showRegister=false" class="btn btn-secondary">login</button>
       </div>
     </div>
@@ -58,26 +58,40 @@ export default {
       showRegister:false,
       email:'',
       password:'',
+      errorMssg:'',
     }
   },
   components: {
     BirdLogo
   },
-
+  computed: {
+    fieldsFilled () {
+      return this.email && this.password;
+    }
+  },
   methods: {
-   async register () {
-      const response = await LoginService.register({
-        email: this.email,
-        password: this.password
-      })
+    async register () {
+      try {
+        const response = await LoginService.register({
+          email: this.email,
+          password: this.password
+        })
+      }
+      catch (error){
+          console.log(error)
+      }
     },
     async login () {
-      const response = await LoginService.login({
-        email: this.email,
-        password: this.password
-      })
-
-    },
+      try {
+        const response = await LoginService.login({
+          email: this.email,
+          password: this.password
+        })
+      }
+      catch (error){
+          console.log(error)
+      }
+    }
   },
   mounted() {
     var openLoginRight = document.querySelector('.h1');
