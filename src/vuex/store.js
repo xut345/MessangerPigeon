@@ -17,7 +17,6 @@ const state = {
     registerError:false
 }
 
-// 注册上面引入的各大模块
 const store = new Vuex.Store({
     state,    
     getters,  

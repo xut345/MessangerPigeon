@@ -47,7 +47,7 @@ export const setToken = (state, token) => {
     state.token = token
 }
 
-export const createNewMessageBox = (state, messageBox) => {
+export const createNewPigeon = (state, newPigeon) => {
     state.userMessageList = state.userMessageList.concat(messageBox)
 }
 

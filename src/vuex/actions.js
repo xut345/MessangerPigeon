@@ -1,6 +1,6 @@
 
-export function createNewMessageBox({commit}, messageBox) {
-    return commit ('createNewMessageBox', messageBox)
+export function createNewPigeon({commit}, newPigeon) {
+    return commit ('createNewPigeon', newPigeon)
 }
  
 
