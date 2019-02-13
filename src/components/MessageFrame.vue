@@ -8,6 +8,7 @@
     <div id="right">
       <MessageFrameBackground/>
       <BirdButton/>   
+      <flying-birds/>
     </div> 
   </div> 
 
@@ -17,6 +18,7 @@
 <script>
 import MessageFrameBackground from "./MessageFrameBackground"
 import BirdButton from "./BirdButton"
+import FlyingBirds from "./FlyingBirds"
 import Profile from "./Profile"
 import router from '@/router/index'
 import {mapActions, mapGetters} from 'vuex'
@@ -27,6 +29,7 @@ export default {
     MessageFrameBackground,
     BirdButton,
     Profile,
+    FlyingBirds,
   },
   methods:{
     ...mapActions( 

@@ -92,6 +92,7 @@ export default {
 <style lang="scss" scoped>
 
   .envelope-box{
+      z-index: 1;
       position:fixed;
       height:450px;
       width:600px;
@@ -131,8 +132,9 @@ export default {
 
 /* wings */
 
-.wing1 {
+.wing1,.wing2 {
     background:white;
+    border-radius: 12px 20px 60px 20px;
     width:100px;
     height:35px;
     box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
@@ -140,17 +142,24 @@ export default {
 
 /* right wing */
 
-.right1 {
+.right1,.right2 {
     background:white;
     width:100px;
     height:35px;
     position: absolute;
-    right: 12%;
-    top: 20%;
+    right: 13%;
     animation:flap 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
     border-radius: 12px 20px 60px 20px;
     transform:rotate(-10deg);
+}
+
+.right1{
+    top:20%;
+}
+
+.right2{
+    bottom:28%;
 }
 
 @keyframes flap {
@@ -162,7 +171,8 @@ export default {
         transform:rotate(-5deg);
     }
 }
-.right1:before {
+
+.right1:before,.right2:before{
     position:absolute;
     content:'';
     background:white;
@@ -175,7 +185,7 @@ export default {
     
 }
 
-.right1:after {
+.right1:after,.right2:after {
     position:absolute;
     content:'';
     background:white;
@@ -190,14 +200,20 @@ export default {
 
 /* left wing */
 
-.left1 {
+.left1,.left2 {
     position:absolute;
     left:5%;
-    top:20%;
     border-radius:12px 20px 20px 60px;
     animation:flap2 1s infinite;
     border-bottom:3px solid rgba(0,0,0,.08);
     transform:rotate(10deg);
+}
+
+.left1{
+    top:20%;
+}
+.left2 {
+    bottom:28%;
 }
 
 @keyframes flap2 {
@@ -211,7 +227,7 @@ export default {
 }
 
 
-.left1:before {
+.left1:before,.left2:before {
     position:absolute;
     content:'';
     background:white;
@@ -223,7 +239,7 @@ export default {
     margin-top:30px;
 }
 
-.left1:after {
+.left1:after,.left2:after {
       position:absolute;
     content:'';
     background:white;
@@ -237,23 +253,22 @@ export default {
 }
 
 /* heart */
-.heart1:hover{
+.heart1:hover,.heart2:hover{
   cursor: pointer;
 }
-.heart1{
+.heart1,.heart2{
     position: absolute;
     margin: 10% auto;
     left: 30%;
     height: 100px;
     width: 120px;
     z-index:1;
-    animation: heart2 1s infinite;
+    animation: heart 1s infinite;
     transform:scale(.8);
     transition:.6s;
     
 }
-.heart1:before,
-.heart1:after{
+.heart1:before,.heart1:after,.heart2:before,.heart2:after{
     content: "";
     width: 50px;
     height: 80px;
@@ -261,178 +276,31 @@ export default {
     left: 50px;
     top: 0;
     border-radius: 50px 50px 6px 6px;
-    background: rgb(201, 56, 75);
     transform: rotate(-45deg);
     transform-origin: 0 100%;
 }
-.heart1:after{
+
+.heart1:before,.heart1:after{
+    background: rgb(201, 56, 75);
+}
+
+.heart2:before,.heart2:after{
+    background: rgb(55, 161, 231);
+}
+
+.heart1:after,.heart2:after{
     left: 0;
     transform: rotate(45deg);
     transform-origin :100% 100%;
 }
 
-@keyframes heart1 {
+@keyframes heart {
     0% {
         transform: scale(.8) translate(0,0);
     }
     
     50% {
         transform: scale(.85) translate(0,5px);
-    }
-    
-    100% {
-        transform:scale(.8);
-    }
-}
-
-
-
-
-.wing2 {
-    background:white;
-     border-radius: 12px 20px 60px 20px;
-     width:100px;
-     height:35px;
-     box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
-}
-
-/* right wing */
-
-.right2 {
-    position:absolute;
-    right:12%;
-    bottom:28%;
-    animation:flap11 1s infinite;
-    border-bottom:3px solid rgba(0,0,0,.08);
-     border-radius: 12px 20px 60px 20px;
-    transform:rotate(-10deg);
-}
-
-@keyframes flap11 {
-    0% {
-        transform:rotate(-10deg);
-    }
-    
-    50% {
-        transform:rotate(-5deg);
-    }
-}
-.right2:before {
-    position:absolute;
-    content:'';
-    background:white;
-    width:70%;
-    height:80%;
-       border-bottom:3px solid rgba(0,0,0,.08);
-    border-radius: 20px 20px 60px 20px;
-    transform:rotate(20deg) translate(-1px,0);
-    margin-top:30px;
-}
-
-.right2:after {
-      position:absolute;
-    content:'';
-    background:white;
-    width:40%;
-    transform:rotate(29deg) translate(-8px,0);
-    height:45%;
-       border-bottom:3px solid rgba(0,0,0,.08);
-    border-radius: 0px 0px 60px 70px;
-    margin-top:50px;
-    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
-}
-
-/* left wing */
-
-.left2 {
-    position:absolute;
-    left:5%;
-    bottom:28%;
-    border-radius:12px 20px 20px 60px;
-    animation:flap22 1s infinite;
-    border-bottom:3px solid rgba(0,0,0,.08);
-    transform:rotate(10deg);
-}
-
-@keyframes flap22 {
-    0% {
-        transform:rotate(10deg);
-    }
-    
-    50% {
-        transform:rotate(5deg);
-    }
-}
-
-
-.left2:before {
-    position:absolute;
-    content:'';
-    background:white;
-    width:70%;
-       border-bottom:3px solid rgba(0,0,0,.08);
-    transform:translate(46%,0) rotate(-20deg);
-    height:80%;
-      border-radius:12px 20px 70px 70px;
-    margin-top:30px;
-}
-
-.left2:after {
-      position:absolute;
-    content:'';
-    background:white;
-    width:40%;
-       border-bottom:3px solid rgba(0,0,0,.08);
-    height:45%;
-     transform:translate(164%,0) rotate(-34deg);
-     border-radius:0px 0px 70px 60px;
-    margin-top:46px;
-    box-shadow: 0 4px 8px 0 #047a97b4, 0 6px 20px 0 #047a9762;
-}
-
-/* heart */
-.heart2:hover{
-  cursor: pointer;
-}
-
-.heart2{
-    position: absolute;
-    margin:10% auto;
-    left: 30%;
-    height: 100px;
-    width: 120px;
-    z-index:1;
-    animation: heart2 1s infinite;
-    transform:scale(.8);
-    transition:.6s;
-    
-}
-.heart2:before,
-.heart2:after{
-    content: "";
-    width: 50px;
-    height: 80px;
-    position: fixed;
-    left: 50px;
-    top: 0;
-    border-radius: 50px 50px 6px 6px;
-    background: rgb(55, 161, 231);
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-}
-.heart2:after{
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin :100% 100%;
-}
-
-@keyframes heart2 {
-    0% {
-        transform: scale(.8) translate(0,0);
-    }
-    
-    50% {
-        transform: scale(.85) translate(0, 5px);
     }
     
     100% {
