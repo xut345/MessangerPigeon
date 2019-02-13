@@ -1,6 +1,6 @@
 
-export function createNewMessageBox({commit}, messageBox) {
-    return commit ('createNewMessageBox', messageBox)
+export function createNewPigeon({commit}, newPigeon) {
+    return commit ('createNewPigeon', newPigeon)
 }
  
 
@@ -21,4 +21,30 @@ export function logout({commit}) {
 
 export function setToken({commit}, token) {
     return commit ('setToken')
+}
+
+
+export function showFlyingBird({commit}) {
+    return commit ('showFlyingBird')
+}
+
+export function hideFlyingBird({commit}) {
+    return commit ('hideFlyingBird')
+}
+
+export function showLoginError({commit}) {
+    return commit ('showLoginError')
+}
+
+export function hideLoginError({commit}) {
+    return commit ('hideLoginError')
+}
+
+
+export function showRegisterError({commit}) {
+    return commit ('showRegisterError')
+}
+
+export function hideRegisterError({commit}) {
+    return commit ('hideRegisterError')
 }
