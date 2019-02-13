@@ -31,3 +31,20 @@ export function showFlyingBird({commit}) {
 export function hideFlyingBird({commit}) {
     return commit ('hideFlyingBird')
 }
+
+export function showLoginError({commit}) {
+    return commit ('showLoginError')
+}
+
+export function hideLoginError({commit}) {
+    return commit ('hideLoginError')
+}
+
+
+export function showRegisterError({commit}) {
+    return commit ('showRegisterError')
+}
+
+export function hideRegisterError({commit}) {
+    return commit ('hideRegisterError')
+}

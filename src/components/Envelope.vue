@@ -12,13 +12,13 @@
             <abbr title="Public Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')"></div></abbr>
         </div>
     </div>
-    <ui-modal ref="receiveMessage" title= "New Message"  size="large" align-top :align-top-margin="100">
+    <ui-modal ref="receiveMessage" title= "New Pigeon"  size="large" align-top :align-top-margin="100">
         <div>
             <b-form-text id="textarea1">
                 <div class="message-topic">{{messageBox==null?"":messageBox.topic}}</div>
 
                 <b-container v-for="mess in messageBox==null?null:messageBox.messages" v-bind:key="mess.id">
-                    <div v-if="mess.user==='Steven'">
+                    <div v-if="mess.user===user">
                     <b-row >
                         <b-col></b-col>
                         <b-col><div class="message-bar-right"  >{{mess.content}}</div></b-col>
@@ -29,7 +29,7 @@
                     </b-row>
                     </div>
 
-                    <div v-if="mess.user!=='Steven'">
+                    <div v-if="mess.user!==user">
                     <b-row >
                         <b-col> <div class="message-bar"  >{{mess.content}}</div> </b-col>
                         <b-col></b-col>
@@ -84,7 +84,7 @@ export default {
     },
   },
   computed: {
-        ...mapGetters(['toBePickUpMessageList'])
+        ...mapGetters(['toBePickUpMessageList','user'])
     }
 }
 </script>
@@ -314,7 +314,8 @@ export default {
     font-weight: 600;
     padding-bottom: 30px;
     padding-top: 30px;
-    border-bottom: 1px solid #eee
+    border-bottom: 1px solid #eee;
+    color: #555
 }
 
 .message-bar, .message-bar-right{

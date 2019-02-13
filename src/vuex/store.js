@@ -12,7 +12,9 @@ const state = {
     toBePickUpMessageList: null,
     user:localStorage.getItem('user'),
     token:localStorage.getItem('token'),
-    showFlyingBird:false
+    showFlyingBird:false,
+    loginError:false,
+    registerError:false
 }
 
 // 注册上面引入的各大模块

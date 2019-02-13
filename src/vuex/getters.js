@@ -10,5 +10,6 @@ export const token = state => state.token
 export const showFlyingBird = state => state.showFlyingBird
 
 
+export const loginError = state => state.loginError
 
-  
+export const registerError = state => state.registerError

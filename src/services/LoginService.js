@@ -6,7 +6,6 @@ import store from '@/vuex/store'
 export default {
     register (credentials) {
       return Api().post('register', credentials).then(function (response) {
-        console.log(response)
         if(response.statusText==='Created'){
           localStorage.setItem('user', credentials.email);
           localStorage.setItem('token', response.data.authorization);
@@ -18,8 +17,9 @@ export default {
           alert("An error has occurred with the login process.")
         }
       }).catch(function (error) {
-        alert(error)
-      });
+        store.commit('showRegisterError');
+        store.commit('hideRegisterError');
+      })
     },
     login (credentials) {
         return Api().post('login', credentials)
@@ -38,7 +38,8 @@ export default {
           }
       })     
       .catch(function (error) {
-        alert(error)
+        store.commit('showLoginError');
+        store.commit('hideLoginError');
       });
     }
 }

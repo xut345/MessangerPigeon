@@ -3,7 +3,7 @@
       <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
       <ui-button class="self-btn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
       
-        <ui-modal ref="sendMessage" title="New Message"  size="large" align-top :align-top-margin="200">
+        <ui-modal ref="sendMessage" title="New Pigeon"  size="large" align-top :align-top-margin="200">
             <div>
                 <b-form-group label="Title">
                 <b-form-input v-model="title" type="text" placeholder="Enter your title"></b-form-input>
@@ -72,7 +72,7 @@ export default {
     },
     sendNewMessageBox(ref){
         if(this.title.length==0 || this.content.length==0){
-            alert("You have to enter your message title and content!");
+            alert("You have to enter your Pigeon title and content!");
         }
         else{
             this.closeModal(ref);
