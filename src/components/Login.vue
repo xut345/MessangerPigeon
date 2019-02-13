@@ -6,12 +6,12 @@
   <b-alert :show="registerError">
     Your username has been registered.
   </b-alert>
-   <div class="notice">
-    Click the Pigeon to start your trip.
-  </div>
  <div class="login-wrapper">
   <div class="login-left">
     <div  class="h1"><BirdLogo></BirdLogo></div>
+    <div class="notice">
+     Click the Pigeon to start your trip.
+    </div>
   </div>
   <div class="login-right">
     <div class="loginBox" v-show="showlogin">
@@ -127,11 +127,14 @@ export default {
 
 }
 .notice{
-  position: fixed;
-  top: 600px;
+  transition: all 770ms cubic-bezier(0.51, 0.04, 0.12, 0.99);
+  position: absolute;
+  bottom: 20%;
+  left: 35%;
   z-index: 3;
   color: #aaa;
   font-weight: 600;
+  opacity: 0.5;
 }
 
 html, 
@@ -222,7 +225,7 @@ input:placeholder-shown  + label {
   top:20%;
 }
 
-.open .h1 {
+.open .h1,.open .notice{
   -webkit-transform: translateX(200px) translateZ(0);
           transform: translateX(200px) translateZ(0);
 }
