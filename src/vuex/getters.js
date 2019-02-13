@@ -7,5 +7,8 @@ export const user = state => state.user
 
 export const token = state => state.token
 
+export const showFlyingBird = state => state.showFlyingBird
+
+
 
   

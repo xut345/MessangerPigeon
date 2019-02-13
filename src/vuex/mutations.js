@@ -1,4 +1,13 @@
+export const showFlyingBird = (state) => {
+    state.showFlyingBird = true
+}
 
+export const hideFlyingBird = (state) => {
+    setTimeout(function(){
+        state.showFlyingBird = false
+    },8000)
+    
+}
 
 export const login = (state, user) => {
     state.user = user
@@ -23,7 +32,6 @@ export const createNewMessageBox = (state, messageBox) => {
 
 export const pickNewMessageBox = (state) => {
     var list = {
-
         private:{
             id:2947230875280,
             sent_by:"Tianhua1", 
@@ -42,8 +50,6 @@ export const pickNewMessageBox = (state) => {
                 },
             ]
         },
-    
-        
         public: {
             id:294723087528011,
             sent_by:"Tianhua2", 

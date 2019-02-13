@@ -33,13 +33,16 @@
 
 <script>
 import Envelope from "./Envelope"
+import FlyingBirds from "./FlyingBirds"
 
 import {mapActions, mapGetters} from 'vuex'
+import { setTimeout } from 'timers';
 
 export default {
   name: 'MessageBox',
   components:{
        Envelope,
+       FlyingBirds
   },
   data(){
     return{
@@ -55,7 +58,7 @@ export default {
   },
   methods: {
     ...mapActions( 
-        ['createNewMessageBox', 'pickNewMessageBox']
+        ['createNewMessageBox', 'pickNewMessageBox', 'showFlyingBird','hideFlyingBird']
     ),
     openModal(ref) {
         this.$refs[ref].open();
@@ -94,6 +97,8 @@ export default {
             this.createNewMessageBox(newMess)
             this.title = ''
             this.content = ''
+            this.showFlyingBird();
+            this.hideFlyingBird();
         }
 
     }

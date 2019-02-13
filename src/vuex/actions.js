@@ -22,3 +22,12 @@ export function logout({commit}) {
 export function setToken({commit}, token) {
     return commit ('setToken')
 }
+
+
+export function showFlyingBird({commit}) {
+    return commit ('showFlyingBird')
+}
+
+export function hideFlyingBird({commit}) {
+    return commit ('hideFlyingBird')
+}

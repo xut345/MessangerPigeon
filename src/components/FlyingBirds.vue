@@ -16,7 +16,6 @@
 
 <script>
 export default {
-    name: 'Envelope'
 }
 </script>
 
@@ -30,17 +29,10 @@ export default {
 
 .container {
 	position: fixed;
-    left:25%;
-    bottom:30%;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    left:450px;
+    top:30px;
 	min-height: 35rem;
-	background-blend-mode: soft-light;
-	background-size: cover;
-	background-position: center center;
-	padding: 2rem;
+	width: 3000px;
 }
 
 .bird {
@@ -49,7 +41,6 @@ export default {
 	width: 88px;
 	height: 125px;
 	will-change: background-position;
-	
 	animation-name: fly-cycle;
 	animation-timing-function: steps(10);
 	animation-iteration-count: infinite;
@@ -75,7 +66,7 @@ export default {
 	
 	animation-name: fly-right-one;
 	animation-timing-function: linear;
-	animation-iteration-count: infinite;
+	animation-iteration-count: 1;
 	
 	&--one {
 		animation-duration: 15s;

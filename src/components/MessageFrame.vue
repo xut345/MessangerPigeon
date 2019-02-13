@@ -7,8 +7,8 @@
     </div> 
     <div id="right">
       <MessageFrameBackground/>
-      <BirdButton/>   
-      <flying-birds/>
+      <BirdButton/>
+      <div v-if="showFlyingBird"> <flying-birds/>   </div>   
     </div> 
   </div> 
 
@@ -22,9 +22,15 @@ import FlyingBirds from "./FlyingBirds"
 import Profile from "./Profile"
 import router from '@/router/index'
 import {mapActions, mapGetters} from 'vuex'
+import { setTimeout } from 'timers';
 
 export default {
   name: 'MessageFrame',
+  data(){
+    return{
+      active:false
+    }
+  },
   components:{
     MessageFrameBackground,
     BirdButton,
@@ -39,6 +45,9 @@ export default {
       this.logout();
       router.push({ name: 'Login' })
     }
+  },
+    computed: {
+      ...mapGetters(['showFlyingBird'])
   }
 }
 </script>
