@@ -1,6 +1,7 @@
 # webfrontend
 
 ### Dev: http://35.224.82.158:8080
+### Prod: http://35.184.34.40:8080
 
 #### Login Credentials:
 ```
