@@ -11,10 +11,12 @@ const state = {
     userMessageList:list,
     toBePickUpMessageList: null,
     user:localStorage.getItem('user'),
-    token:localStorage.getItem('token')
+    token:localStorage.getItem('token'),
+    showFlyingBird:false,
+    loginError:false,
+    registerError:false
 }
 
-// 注册上面引入的各大模块
 const store = new Vuex.Store({
     state,    
     getters,  

@@ -1,8 +1,17 @@
 <template>
 <div class="body">
+  <b-alert :show="loginError">
+    Your username or password is wrong.
+  </b-alert>
+  <b-alert :show="registerError">
+    Your username has been registered.
+  </b-alert>
  <div class="login-wrapper">
   <div class="login-left">
-    <div class="h1"><BirdLogo></BirdLogo></div>
+    <div  class="h1"><BirdLogo></BirdLogo></div>
+    <div class="notice">
+     Click the Pigeon to start your trip.
+    </div>
   </div>
   <div class="login-right">
     <div class="loginBox" v-show="showlogin">
@@ -25,7 +34,7 @@
     <div class="registerBox" v-show="showRegister">
        <div class="h2">Register</div>
        <div class="form-group">
-          <input type="text" id="email2" v-model = "email" placeholder="User name">
+          <input type="text" id="email2" v-model = "email" placeholder="Username">
         </div>
        <div class="form-group">
           <input type="password" id="password2" v-model = "password" placeholder="Password">
@@ -65,6 +74,7 @@ export default {
     BirdLogo
   },
   computed: {
+    ...mapGetters(['loginError','registerError']),
     fieldsFilled () {
       return this.email && this.password;
     }
@@ -109,6 +119,22 @@ export default {
 
 * {
   box-sizing: border-box;
+}
+
+.alert{
+  position: fixed;
+  top: 100px;
+
+}
+.notice{
+  transition: all 770ms cubic-bezier(0.51, 0.04, 0.12, 0.99);
+  position: absolute;
+  bottom: 20%;
+  left: 35%;
+  z-index: 3;
+  color: #aaa;
+  font-weight: 600;
+  opacity: 0.5;
 }
 
 html, 
@@ -199,7 +225,7 @@ input:placeholder-shown  + label {
   top:20%;
 }
 
-.open .h1 {
+.open .h1,.open .notice{
   -webkit-transform: translateX(200px) translateZ(0);
           transform: translateX(200px) translateZ(0);
 }

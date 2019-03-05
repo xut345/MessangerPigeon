@@ -1,13 +1,17 @@
 <template>
     <div>
+
       <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
       <ui-button class="self-btn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
       
-        <ui-modal ref="sendMessage" title="New Message"  size="large" align-top :align-top-margin="200">
+        <ui-modal ref="sendMessage" title="New Pigeon"  size="large" align-top :align-top-margin="200">
+                   
             <div>
+                 <b-alert :show="showAlert" @dismissed="showAlert=false">You must type your Pigion's topic, quantity and content.</b-alert>
                 <b-form-group label="Title">
                 <b-form-input v-model="title" type="text" placeholder="Enter your title"></b-form-input>
                 </b-form-group>
+                
                 <b-form-group label="Type">
                 <b-form-radio-group id="btnradios2"
                                     buttons
@@ -16,6 +20,12 @@
                                     :options="options"
                                     name="radioBtnOutline" />
                 </b-form-group>
+
+                <b-form-group label="Quantity">
+               <b-form-select v-model="selected1" :options="options1" class="mb-3" />
+               
+                </b-form-group>
+
                 <b-form-group label="Message">
                 <b-form-textarea id="textarea1"
                         v-model="content"
@@ -33,29 +43,43 @@
 
 <script>
 import Envelope from "./Envelope"
+import FlyingBirds from "./FlyingBirds"
+import PigeonService from '@/services/PigeonService'
 
 import {mapActions, mapGetters} from 'vuex'
+import { setTimeout } from 'timers';
 
 export default {
   name: 'MessageBox',
   components:{
        Envelope,
+       FlyingBirds
   },
   data(){
     return{
       show:false,
       title: '',
       content:'',
-      selected: 'private',
+      selected: false,
       options: [
-        { text: 'Public', value: 'public' },
-        { text: 'Private', value: 'private' }
-      ]
+        { text: 'Public', value: true },
+        { text: 'Private', value: false }
+      ],
+      selected1: null,
+      options1: [
+        { value: null, text: 'Please select a quantity' ,disabled: true},
+        { value: 1, text: '1' },
+        { value: 2, text: '2' },
+        { value: 3, text: '3' },
+        { value: 4, text: '4' },
+        { value: 5, text: '5' }
+      ],
+      showAlert:false
     }
   },
   methods: {
     ...mapActions( 
-        ['createNewMessageBox', 'pickNewMessageBox']
+        ['createNewPigeon', 'pickNewMessageBox', 'showFlyingBird','hideFlyingBird']
     ),
     openModal(ref) {
         this.$refs[ref].open();
@@ -67,37 +91,41 @@ export default {
         this.pickNewMessageBox();
         this.show = !this.show;   
     },
+    async sendPigeon (data) {
+        
+      try {
+        const response = await PigeonService.sendPigeon(data)
+
+      }
+      catch (error){
+          console.log(error)
+      }
+    },
     sendNewMessageBox(ref){
-        if(this.title.length==0 || this.content.length==0){
-            alert("You have to enter your message title and content!");
+        if(this.title.length==0 || this.content.length==0 || this.selected1===null){
+            this.showAlert=true;
         }
         else{
             this.closeModal(ref);
             var newMess = {
-                id:235446564565,
-                sent_by:"Dehou", 
-                created_time:"2019/02/20", 
+                name:this.user,
                 topic:this.title,
-                currently_at:"Dehou", 
-                time_arrived_at_current_user:"2019/02/20", 
-                isMultiUser:this.selected==='private'?false:true,
-                viewable_by:["Dehou"],
-                messages:[
-                            {
-                                id:23828535436097458,
-                                user:"Dehou", 
-                                created_time:"2019/02/20 14:30:11",
-                                content: this.content
-                            },
-                ]
+                message_content:this.content,
+                isPublic:this.selected,
+                num:this.selected1
             }
-            this.createNewMessageBox(newMess)
+            this.sendPigeon(newMess)
             this.title = ''
             this.content = ''
+            this.selected = false
+            this.selected1 = null
         }
 
     }
-  }
+  },
+   computed: {
+        ...mapGetters(['user'])
+    }
 
 }
 </script>

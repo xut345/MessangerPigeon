@@ -66,7 +66,7 @@ $timelineAccumulated: ();
 }
 
 .globe {
-  transition: border 1s;
+  transition: background 0.5s;
 	bottom: 30px;
   left: 330px;
 	position: fixed;

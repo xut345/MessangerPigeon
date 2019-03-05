@@ -2,6 +2,12 @@
 
 ### Dev: http://35.224.82.158:8080
 
+#### Login Credentials:
+```
+Username: test
+Password: password
+```
+
 > A Vue.js project
 
 ## Build Setup
