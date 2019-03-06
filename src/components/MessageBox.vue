@@ -103,10 +103,11 @@ export default {
     },
     sendNewMessageBox(ref){
         if(this.title.length==0 || this.content.length==0 || this.selected1===null){
-            this.showAlert=true;
+            this.showAlert=true
         }
         else{
             this.closeModal(ref);
+            this.showAlert = false
             var newMess = {
                 name:this.user,
                 topic:this.title,

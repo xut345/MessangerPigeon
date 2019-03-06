@@ -39,16 +39,29 @@
                         <b-col></b-col>
                     </b-row>
                     </div>
-                </b-container>
-                
-                
-
-                
+                </b-container> 
             </b-form-text>
         </div>
         <div class="modal-fun">
             <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
-            <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+            <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+        </div>
+        <div>
+            <ui-modal ref="respondMessage" title= "Respond"  size="large" align-top :align-top-margin="100">
+                <div>
+                    <b-alert :show="showAlert" @dismissed="showAlert=false">You must type your content.</b-alert>
+                    <b-form-group label="Message">
+                    <b-form-textarea id="textarea1"
+                        v-model="content"
+                        placeholder="Enter something..."
+                        :rows="5"
+                        >
+                    </b-form-textarea>
+                </b-form-group>
+                <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
+                <b-button  @click="sendRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+                </div>
+            </ui-modal>
         </div>
     </ui-modal>
   
@@ -64,7 +77,9 @@ export default {
   },
   data(){
     return{
-        messageBox:null
+        messageBox:null,
+        content:'',
+        showAlert:false,
     }
   },
   methods: {
@@ -81,6 +96,36 @@ export default {
     openPublicMessageBox(ref){
         this.messageBox=this.toBePickUpMessageList.public
         this.openModal(ref)
+    },
+    async sendRespond (data) {
+        
+      try {
+        const response = await PigeonService.sendRespond(data)
+
+      }
+      catch (error){
+          console.log(error)
+      }
+    },
+    sendRespondMessageBox(ref){
+        if(this.content.length==0){
+            this.showAlert=true
+        }
+        else{
+            this.closeModal(ref)
+            this.showAlert=false
+            var newContent = {
+                name: this.user,
+                message_content: this.content,
+            }
+            this.sendRespond(newContent)
+            this.content = ''
+        }
+    },
+    closeRespondMessageBox(ref){
+        this.showAlert=false
+        this.closeModal(ref)
+        this.content = ''
     },
   },
   computed: {
