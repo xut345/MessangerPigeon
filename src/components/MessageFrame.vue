@@ -2,7 +2,7 @@
 <div class="root"> 
     <div id="left"> 
       <Profile/>
-      <!-- <MessList/>  move to iteration2 -->
+      <MessList/>
       <div class="left-fun">  <button class="btn btn-danger" @click="userLogout()">Logout</button> </div>
     </div> 
     <div id="right">
@@ -23,6 +23,7 @@ import Profile from "./Profile"
 import router from '@/router/index'
 import {mapActions, mapGetters} from 'vuex'
 import { setTimeout } from 'timers';
+import MessList from "./MessList"
 
 export default {
   name: 'MessageFrame',
@@ -32,6 +33,7 @@ export default {
     }
   },
   components:{
+    MessList,
     MessageFrameBackground,
     BirdButton,
     Profile,

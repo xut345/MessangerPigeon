@@ -1,11 +1,15 @@
 
-export function createNewPigeon({commit}, newPigeon) {
-    return commit ('createNewPigeon', newPigeon)
+export function addPigeonToList({commit}, newPigeon) {
+    return commit ('addPigeonToList', newPigeon)
 }
  
 
 export function pickNewMessageBox({commit}, messageBox) {
     return commit ('pickNewMessageBox')
+}
+
+export function sendRespond({commit}, message) {
+    return commit ('sendResponse')
 }
 
 
