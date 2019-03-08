@@ -15,27 +15,27 @@
     <ui-modal ref="receiveMessage" title= "New Pigeon"  size="large" align-top :align-top-margin="100">
         <div>
             <b-form-text id="textarea1">
-                <div class="message-topic">{{messageBox==null?"":messageBox.topic}}</div>
+                <div class="message-topic">{{this.toBePickUpMessageList==null?"":this.toBePickUpMessageList.topic}}</div>
 
-                <b-container v-for="mess in messageBox==null?null:messageBox.messages" v-bind:key="mess.id">
-                    <div v-if="mess.user===user">
+                <b-container v-for="mess in this.toBePickUpMessageList==null?null:this.toBePickUpMessageList.messages" v-bind:key="mess.id">
+                    <div v-if="mess.sent_by===user">
                     <b-row >
                         <b-col></b-col>
-                        <b-col><div class="message-bar-right"  >{{mess.content}}</div></b-col>
+                        <b-col><div class="message-bar-right"  >{{mess.message_contents}}</div></b-col>
                     </b-row>
                     <b-row>
                         <b-col></b-col>
-                        <b-col><div class="message-user"> From {{mess.user}}</div></b-col>
+                        <b-col><div class="message-user"> From {{mess.sent_by}}</div></b-col>
                     </b-row>
                     </div>
 
-                    <div v-if="mess.user!==user">
+                    <div v-if="mess.sent_by!==user">
                     <b-row >
-                        <b-col> <div class="message-bar"  >{{mess.content}}</div> </b-col>
+                        <b-col> <div class="message-bar"  >{{mess.message_contents}}</div> </b-col>
                         <b-col></b-col>
                     </b-row>
                     <b-row>
-                        <b-col> <div class="message-user-right"> From {{mess.user}}</div> </b-col>
+                        <b-col> <div class="message-user-right"> From {{mess.sent_by}}</div> </b-col>
                         <b-col></b-col>
                     </b-row>
                     </div>
@@ -59,7 +59,7 @@
                     </b-form-textarea>
                 </b-form-group>
                 <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
-                <b-button  @click="sendRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+                <b-button  @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
                 </div>
             </ui-modal>
         </div>
@@ -70,6 +70,8 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import PigeonService from '@/services/PigeonService'
+import { constants } from 'fs';
 
 export default {
   name: 'Envelope',
@@ -77,12 +79,14 @@ export default {
   },
   data(){
     return{
-        messageBox:null,
         content:'',
         showAlert:false,
     }
   },
   methods: {
+    ...mapActions( 
+        ['addPigeonToList']
+    ),
     openModal(ref) {
         this.$refs[ref].open();
     },
@@ -90,35 +94,38 @@ export default {
         this.$refs[ref].close();
     },
     openPrivateMessageBox(ref){
-        this.messageBox=this.toBePickUpMessageList.private
+        var newPrivateMessage = {
+            name: this.user,
+            is_public:false,
+            getMessages:true,
+        }
+        this.assignPigeon(newPrivateMessage)
         this.openModal(ref)
+        
     },
     openPublicMessageBox(ref){
-        this.messageBox=this.toBePickUpMessageList.public
+        var newPublicMessage = {
+            name: this.user,
+            is_public:true,
+            getMessages:true,
+        }
+        this.assignPigeon(newPublicMessage)
         this.openModal(ref)
     },
-    async sendRespond (data) {
-        
-      try {
-        const response = await PigeonService.sendRespond(data)
-
-      }
-      catch (error){
-          console.log(error)
-      }
-    },
-    sendRespondMessageBox(ref){
+    sendResponseMessageBox(ref){
         if(this.content.length==0){
             this.showAlert=true
         }
         else{
-            this.closeModal(ref)
             this.showAlert=false
             var newContent = {
+                id: this.toBePickUpMessageList.id,
                 name: this.user,
                 message_content: this.content,
             }
-            this.sendRespond(newContent)
+            this.sendResponse(newContent)
+            this.addPigeonToList(this.toBePickUpMessageList)
+            this.closeModal(ref)
             this.content = ''
         }
     },
@@ -126,6 +133,26 @@ export default {
         this.showAlert=false
         this.closeModal(ref)
         this.content = ''
+    },
+    async assignPigeon (data) {
+        
+      try {
+        const response = await PigeonService.assignPigeon(data)
+
+      }
+      catch (error){
+          console.log(error)
+      }
+    },
+    async sendResponse (data) {
+        
+      try {
+        const response = await PigeonService.sendResponse(data)
+
+      }
+      catch (error){
+          console.log(error)
+      }
     },
   },
   computed: {

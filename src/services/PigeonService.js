@@ -13,12 +13,22 @@ export default {
       console.log(error)        
     })
   },
-  sendRespond (data) {
-    return Api().post('insertMessage', data).then(function (response) {
-      if(response.statusText==='Created'){
+  assignPigeon (data) {
+    return Api().post('assignAndUpdateRandomPigeon', data).then(function (response) {
+      if(response.statusText==='OK'){
+        store.commit('pickNewMessageBox', response.data);
       }
     }).catch(function (error) {
       console.log(error)
     })
-  }
+  },
+  sendResponse (data) {
+    return Api().post('insertMessage', data).then(function (response) {
+      if(response.statusText==='OK'){
+        store.commit("sendResponse",response.data)
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+  },
 }

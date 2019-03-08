@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     ...mapActions( 
-        ['createNewPigeon', 'pickNewMessageBox', 'showFlyingBird','hideFlyingBird']
+        ['addPigeonToList','showFlyingBird','hideFlyingBird']
     ),
     openModal(ref) {
         this.$refs[ref].open();
@@ -88,7 +88,6 @@ export default {
         this.$refs[ref].close();
     },
     receiveRandomMessageBox: function(){
-        this.pickNewMessageBox();
         this.show = !this.show;   
     },
     async sendPigeon (data) {
@@ -108,14 +107,14 @@ export default {
         else{
             this.closeModal(ref);
             this.showAlert = false
-            var newMess = {
+            var newPigeon = {
                 name:this.user,
                 topic:this.title,
                 message_content:this.content,
                 isPublic:this.selected,
                 num:this.selected1
             }
-            this.sendPigeon(newMess)
+            this.sendPigeon(newPigeon)
             this.title = ''
             this.content = ''
             this.selected = false
