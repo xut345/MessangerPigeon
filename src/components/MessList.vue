@@ -4,7 +4,7 @@
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
     </div>
     <div class="mess-list">
-        <div class="mess" v-for="mess in userMessageList" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
+        <div class="mess" v-for="mess in this.userMessageList" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
     </div>
 </div>
 </template>
