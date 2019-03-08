@@ -77,7 +77,6 @@
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
     "nightwatch": "^0.9.12",
-    "pre-push": "^0.1.1",
     "vue-jest": "^1.0.2"
   },
   "pre-push": [
