@@ -15,16 +15,11 @@ Password: password
 
 ``` bash
 # install vue
-npm install -g vue
 npm install -g vue-cli
 
 # install dependencies (do all of these calls below this line in the working directory)
 npm install
 # ignore any warnings
-
-# install axios dependencies
-npm install -save axios
-npm install -save vue-axios
 
 # serve with hot reload at localhost:8080
 npm run dev
