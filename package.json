@@ -73,6 +73,7 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.29",
     "babel-jest": "^21.0.2",
     "jest": "^22.0.4",
     "jest-serializer-vue": "^0.3.0",
