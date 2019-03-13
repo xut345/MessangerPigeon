@@ -62,6 +62,7 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 #left{
+  z-index: 3;
   float: left;
   width: 300px;
   height: 100%;
@@ -82,11 +83,11 @@ body{
 
 .left-fun{
   position: fixed;
-  bottom: 0;
+  top: 80px;
+  left: 110px;
   padding-left: 110px;
   padding-top: 20px;
-  height: 80px;
-  width: 100%;
-  border-top: 1px solid #0587a846;
+  height: 30%;
+  width: 10%;
 }
 </style>

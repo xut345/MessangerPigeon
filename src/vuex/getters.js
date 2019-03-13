@@ -1,5 +1,7 @@
 
-export const userMessageList = state => state.userMessageList
+export const userPigeonList = state => state.userPigeonList
+
+export const userPigeonMessageList = state => state.userPigeonMessageList
 
 export const toBePickUpMessageList = state => state.toBePickUpMessageList
 

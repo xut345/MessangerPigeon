@@ -31,4 +31,39 @@ export default {
       console.log(error)
     })
   },
+  respondPigeon (data) {
+    return Api().post('insertMessage', data).then(function (response) {
+      if(response.statusText==='OK'){
+        console.log(response.data)
+        store.commit("respondPigeon",response.data)
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+  },
+  getPigeonList (data) {
+    return Api().get('getPigeonList', {params :{name:data}}).then(function (response) {
+      if(response.statusText==='OK') {
+        store.commit("getPigeonList", response.data)
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+  },
+  getPigeonMessage (pigeonId, getMessage) {
+    return Api().get('getPigeon/'+pigeonId, {params: {getMessages:getMessage}}).then(function (response) {
+      if(response.statusText==='OK') {
+        store.commit("getPigeonMessage", response.data.messages)
+      }
+    }).catch(function (error) {
+      console.log(error)
+    })
+  },
+  declineMessage(data) {
+    return Api().post('declineMessage', data).then(function (response){
+      store.commit("declinePigeon", data.id)
+    }).catch(function (error) {
+      console.log(error)
+    })
+  },
 }
