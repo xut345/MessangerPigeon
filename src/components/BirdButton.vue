@@ -1,11 +1,13 @@
 <template>
     <div>
-      <div class="globe" v-on:click="showOption">
+      <div>
+	   <button class="globe" v-on:click="showOption">
         <BirdLogo />
         <div class="hills"></div>
         <div class="cloud"></div>
         <div class="cloud small"></div>
         <div class="wire"></div>
+		</button>
       </div>
       
       <MessageBox v-show="active"/>
