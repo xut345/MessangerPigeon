@@ -43,7 +43,7 @@
             </b-form-text>
         </div>
         <div class="modal-fun">
-            <b-button  @click="closeModal('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
+            <b-button  v-if="this.ableToReject" @click="rejectPigeon('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
             <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
         </div>
         <div>
@@ -71,7 +71,7 @@
 <script>
 import {mapActions, mapGetters} from 'vuex'
 import PigeonService from '@/services/PigeonService'
-import { constants } from 'fs';
+
 
 export default {
   name: 'Envelope',
@@ -79,6 +79,7 @@ export default {
   },
   data(){
     return{
+        ableToReject:true,
         content:'',
         showAlert:false,
     }
@@ -97,17 +98,14 @@ export default {
         var newPrivateMessage = {
             name: this.user,
             is_public:false,
-            getMessages:true,
         }
         this.assignPigeon(newPrivateMessage)
         this.openModal(ref)
-        
     },
     openPublicMessageBox(ref){
         var newPublicMessage = {
             name: this.user,
             is_public:true,
-            getMessages:true,
         }
         this.assignPigeon(newPublicMessage)
         this.openModal(ref)
@@ -118,6 +116,7 @@ export default {
         }
         else{
             this.showAlert=false
+            this.ableToReject=false
             var newContent = {
                 id: this.toBePickUpMessageList.id,
                 name: this.user,
@@ -154,9 +153,21 @@ export default {
           console.log(error)
       }
     },
+    async rejectPigeon(ref){
+      try {
+        this.closeModal(ref)
+        var rejectInfo = {
+          id: this.toBePickUpMessageList.id,
+          name: this.user,
+        }
+        await PigeonService.declineMessage(rejectInfo)
+      }catch (e) {
+        console.log(e)
+      }
+    },
   },
   computed: {
-        ...mapGetters(['toBePickUpMessageList','user'])
+        ...mapGetters(['toBePickUpMessageList','user','userPigeonMessageList'])
     }
 }
 </script>

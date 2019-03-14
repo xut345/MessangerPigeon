@@ -32,7 +32,7 @@ var list = [
         id:2947230875280,
         sent_by:"Tianhua", 
         created_time:"2019/01/20", 
-        topic:"Hello",
+        topic:"Pigeon1",
         currently_at:"Adam", 
         time_arrived_at_current_user:"2019/01/22", 
         isMultiUser:true,
@@ -64,7 +64,7 @@ var list = [
             },
             {
                 id:234708374028,
-                user:"Steven", 
+                user:"asd",
                 created_time:"2019/01/21 14:30:11",
                 content: "message 5"
             },
@@ -82,7 +82,7 @@ var list = [
     id:294723087528011,
     sent_by:"Tianhua", 
     created_time:"2019/01/20", 
-    topic:"Hello",
+    topic:"Pigeon2",
     currently_at:"Adam", 
     time_arrived_at_current_user:"2019/01/22", 
     isMultiUser:true,
@@ -132,7 +132,7 @@ var list = [
     id:2382856239429034,
     sent_by:"Dehou", 
     created_time:"2019/01/20", 
-    topic:"Hello",
+    topic:"Pigeon3",
     currently_at:"Adam", 
     time_arrived_at_current_user:"2019/01/22", 
     isMultiUser:false,
@@ -182,7 +182,7 @@ var list = [
     id:238285620394583049,
     sent_by:"Steven", 
     created_time:"2019/01/20", 
-    topic:"asdas",
+    topic:"Pigeon4",
     currently_at:"Jay", 
     time_arrived_at_current_user:"2019/01/22", 
     isMultiUser:false,
@@ -214,7 +214,7 @@ var list = [
         },
         {
             id:238285620394582,
-            user:"Steven", 
+            user:"asd",
             created_time:"2019/01/21 14:30:11",
             content: "message 5"
         },
@@ -227,14 +227,6 @@ var list = [
     ]
 }
 ]
-
-
-
-
-var toBePickuPList = {
-
-}
-
 
 
 module.exports = list

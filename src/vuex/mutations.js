@@ -48,14 +48,33 @@ export const setToken = (state, token) => {
 }
 
 export const addPigeonToList = (state, newPigeon) => {
-    state.userMessageList = state.userMessageList.concat(newPigeon)
+    state.userPigeonList = state.userPigeonList.concat(newPigeon)
 }
 
 
 export const pickNewMessageBox = (state, pigeon) => {
     state.toBePickUpMessageList = pigeon
+    state.userPigeonList = state.userPigeonList.concat(pigeon)
 }
 
 export const sendResponse = (state, data) => {
-    state.toBePickUpMessageList.messages = state.toBePickUpMessageList.messages.concat(data)
+    state.toBePickUpMessageList.messages = state.toBePickUpMessageList.messages.concat(data.message_contents)
+}
+
+export const respondPigeon = (state, data) => {
+  state.userPigeonMessageList = state.userPigeonMessageList.concat(data)
+}
+
+export const getPigeonList = (state, pigeonList) => {
+  state.userPigeonList = pigeonList
+}
+
+export const getPigeonMessage = (state, messageList) => {
+  state.userPigeonMessageList = messageList
+}
+
+export const declinePigeon = (state, pigeonId) => {
+  state.userPigeonList = state.userPigeonList.filter(function (pigeon) {
+    return pigeonId !== pigeon.id
+  })
 }

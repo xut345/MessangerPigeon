@@ -1,17 +1,31 @@
+export function declinePigeon({commit}, pigeonId) {
+  return commit ('declinePigeon', pigeonId)
+}
+
+export function getPigeonList({commit}, pigeonList) {
+  return commit ('getPigeonList', pigeonList)
+}
+
+export function getPigeonMessage({commit}, messageList) {
+  return commit ('getPigeonMessage', messageList)
+}
 
 export function addPigeonToList({commit}, newPigeon) {
     return commit ('addPigeonToList', newPigeon)
 }
  
 
-export function pickNewMessageBox({commit}, messageBox) {
+export function pickNewMessageBox({commit}, pigeon) {
     return commit ('pickNewMessageBox')
 }
 
-export function sendRespond({commit}, message) {
-    return commit ('sendResponse')
+export function sendResponse({commit}, message) {
+    return commit ('sendResponse', message)
 }
 
+export function respondPigeon({commit}, message) {
+  return commit ('respondPigeon', message)
+}
 
 export function login({commit}, user) {
     return commit ('login')

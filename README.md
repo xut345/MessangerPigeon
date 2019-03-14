@@ -1,4 +1,5 @@
-# webfrontend
+# WebFrontend
+Web Client Repo for the Wandering Messenger Pigeon app for COMP 4350
 
 ### Dev: http://35.224.82.158:8080
 ### Prod: http://35.184.34.40:8080

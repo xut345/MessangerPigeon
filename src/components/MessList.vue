@@ -1,32 +1,141 @@
 <template>
-<div >
+<div>
     <div class="mess-fun">
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
     </div>
     <div class="mess-list">
-        <div class="mess" v-for="mess in this.userMessageList" v-bind:key="mess.id">{{mess.topic}}, {{mess.sent_by}}</div>
+        <div class="mess" v-for="pigeon in this.userPigeonList" v-bind:key="pigeon.id" @click="openPigeon(pigeon)">{{pigeon.topic}} from {{pigeon.sent_by}}</div>
     </div>
+    <ui-modal class="pigeon" ref="openPigeon" title="pigeon from" size="large" align-top :align-top-margin="100">
+      <div>
+        <b-form-text id="textarea1">
+          <div class="message-topic">{{this.clickedPigeon.topic}}</div>
+          <b-container v-for="mess in this.userPigeonMessageList" v-bind:key="mess.id">
+            <div v-if="mess.sent_by===currUser">
+              <b-row >
+                <b-col></b-col>
+                <b-col><div class="message-bar-right"  >{{mess.message_contents}}</div></b-col>
+              </b-row>
+              <b-row>
+                <b-col></b-col>
+                <b-col><div class="message-user"> From {{mess.sent_by}}</div></b-col>
+              </b-row>
+            </div>
+
+            <div v-if="mess.sent_by!==currUser">
+              <b-row >
+                <b-col> <div class="message-bar"  >{{mess.message_contents}}</div> </b-col>
+                <b-col></b-col>
+              </b-row>
+              <b-row>
+                <b-col> <div class="message-user-right"> From {{mess.sent_by}}</div> </b-col>
+                <b-col></b-col>
+              </b-row>
+            </div>
+          </b-container>
+        </b-form-text>
+      </div>
+      <div class=modal-fun>
+        <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+      </div>
+      <div>
+        <ui-modal ref="respondMessage" title= "Respond"  size="large" align-top :align-top-margin="100">
+          <div>
+            <b-alert :show="showAlert" @dismissed="showAlert=false">You must type your content.</b-alert>
+            <b-form-group label="Message">
+              <b-form-textarea id="textarea1"
+                               v-model="content"
+                               placeholder="Enter something..."
+                               :rows="5"
+              >
+              </b-form-textarea>
+            </b-form-group>
+            <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
+            <b-button  @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+          </div>
+        </ui-modal>
+      </div>
+    </ui-modal>
 </div>
 </template>
 
 <script>
 
 import {mapActions, mapGetters} from 'vuex'
+import PigeonService from '@/services/PigeonService'
 
 export default {
     data(){
         return{
-            switch1:false,
+          content:'',
+          currUser:"",
+          clickedPigeon:"",
+          sent_by: "",
+          switch1:false,
+          showAlert:false,
         }
     },
+    methods:{
+      openModal(ref) {
+        this.$refs[ref].open();
+      },
+      closeModal(ref) {
+        this.$refs[ref].close();
+      },
+      async openPigeon(mess){
+        this.currUser = this.user
+        this.sent_by = mess.sent_by
+        this.clickedPigeon = mess
+        await PigeonService.getPigeonMessage(mess.id, true)
+        console.log(this.userPigeonMessageList)
+        this.openModal('openPigeon')
+      },
+      async sendResponse (data) {
+
+        try {
+          const response = await PigeonService.respondPigeon(data)
+
+        }
+        catch (error){
+          console.log(error)
+        }
+      },
+      sendResponseMessageBox(ref){
+        if(!this.content || !this.content.trim()){
+          this.showAlert=true
+        }
+        else{
+          this.showAlert=false
+          var newMessage = {
+            id: this.clickedPigeon.id,
+            name: this.user,
+            message_content: this.content,
+          }
+          this.sendResponse(newMessage)
+          this.closeModal(ref)
+          this.content = ''
+        }
+      },
+      closeRespondMessageBox(ref){
+        this.showAlert=false
+        this.closeModal(ref)
+        this.content = ''
+      },
+    },
+    async mounted(){
+      await PigeonService.getPigeonList(this.user)
+    },
     computed: {
-      ...mapGetters(['userMessageList'])
+      ...mapGetters(['userPigeonList','toBePickUpMessageList','userPigeonMessageList','user'])
   }
 }
 </script>
 
 <style scoped>
-.mess-list{
+  .pigeon{
+    overflow: visible;
+  }
+  .mess-list{
     overflow-y: auto;
     overflow-x: hidden;
     max-height:60%;
@@ -59,4 +168,43 @@ export default {
 .switch{
     float: right;
 }
+
+.message-topic{
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    border-bottom: 1px solid #eee;
+    color: #555
+  }
+
+  .message-bar, .message-bar-right{
+    background-color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    float: left;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 1px 2px 0 #c9c9c9b4, 0 2px 5px 0 #f1f1f1b4;
+  }
+
+  .message-bar-right{
+    background: rgb(4, 158, 196);
+    color: white
+  }
+
+  .message-user{
+    color: #bbb;
+    float: right;
+  }
+
+  .modal-fun{
+    margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 30px;
+  }
 </style>
