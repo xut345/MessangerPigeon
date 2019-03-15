@@ -3,7 +3,7 @@
     <div id="left"> 
       <Profile/>
       <MessList/>
-      <div class="left-fun">  <button class="btn btn-danger" @click="userLogout()">Logout</button> </div>
+      <div class="left-fun">  <button class="btn btn-outline-secondary btn-logout" @click="userLogout()">Logout</button> </div>
     </div> 
     <div id="right">
       <MessageFrameBackground/>
@@ -89,5 +89,12 @@ body{
   padding-top: 20px;
   height: 30%;
   width: 10%;
+}
+
+.btn-logout{
+  width:70px;
+  font-size: 12px;
+  height: 30px;
+  padding: 5px;
 }
 </style>
