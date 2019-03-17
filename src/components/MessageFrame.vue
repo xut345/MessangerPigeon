@@ -27,11 +27,6 @@ import MessList from "./MessList"
 
 export default {
   name: 'MessageFrame',
-  data(){
-    return{
-      active:false
-    }
-  },
   components:{
     MessList,
     MessageFrameBackground,

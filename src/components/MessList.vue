@@ -99,6 +99,7 @@ export default {
         this.clickedPigeon = pigeon
         await PigeonService.getPigeonMessage(pigeon.id, true)
         this.openModal('openPigeon')
+        console.log(this.userPigeonMessageList)
       },
       async sendResponse (data) {
 
