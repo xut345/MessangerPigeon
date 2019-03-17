@@ -3,10 +3,11 @@
     <div class="mess-fun">
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
     </div>
-    <div class="mess-list">
-        <div class="mess" v-for="pigeon in this.userPigeonList" v-bind:key="pigeon.id" @click="openPigeon(pigeon)">{{pigeon.topic}} from {{pigeon.sent_by}}</div>
+    <div v-if="this.userPigeonList" class="mess-list">
+        <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
+          return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)">{{pigeon.topic}} </div>
     </div>
-    <ui-modal class="pigeon" ref="openPigeon" title="pigeon from" size="large" align-top :align-top-margin="100">
+    <ui-modal class="pigeon" ref="openPigeon" title=" " size="large" align-top :align-top-margin="100">
       <div>
         <b-form-text id="textarea1">
           <div class="message-topic">{{this.clickedPigeon.topic}}</div>
@@ -35,9 +36,19 @@
           </b-container>
         </b-form-text>
       </div>
-      <div class=modal-fun>
+
+      <div v-if="this.userPigeonMessageList">
+ <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by===this.user" class=modal-fun>
+        
+        <p class="pigeon-sent-info">Your pigeon has been sent out.</p>
+      </div>
+
+      <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by!==this.user" class=modal-fun>
         <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
       </div>
+
+      </div>
+     
       <div>
         <ui-modal ref="respondMessage" title= "Respond"  size="large" align-top :align-top-margin="100">
           <div>
@@ -82,12 +93,11 @@ export default {
       closeModal(ref) {
         this.$refs[ref].close();
       },
-      async openPigeon(mess){
+      async openPigeon(pigeon){
         this.currUser = this.user
-        this.sent_by = mess.sent_by
-        this.clickedPigeon = mess
-        await PigeonService.getPigeonMessage(mess.id, true)
-        console.log(this.userPigeonMessageList)
+        this.sent_by = pigeon.sent_by
+        this.clickedPigeon = pigeon
+        await PigeonService.getPigeonMessage(pigeon.id, true)
         this.openModal('openPigeon')
       },
       async sendResponse (data) {
@@ -126,7 +136,7 @@ export default {
       await PigeonService.getPigeonList(this.user)
     },
     computed: {
-      ...mapGetters(['userPigeonList','toBePickUpMessageList','userPigeonMessageList','user'])
+      ...mapGetters(['userPigeonList','userPigeonMessageList','user'])
   }
 }
 </script>
@@ -166,7 +176,7 @@ export default {
 }
 
 .switch{
-    float: right;
+    margin-left: 20px;
 }
 
 .message-topic{
@@ -206,5 +216,12 @@ export default {
     margin-top: 40px;
     border-top: 1px solid #eee;
     padding-top: 30px;
+  }
+
+  .pigeon-sent-info{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
   }
 </style>

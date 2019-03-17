@@ -5,7 +5,7 @@
             <b-img thumbnail width="100px" fluid src="https://picsum.photos/250/250/?image=59" alt="Thumbnail" />
           </b-col>
           <b-col>
-            <h3 style="margin-top:30px">{{user==null?"aaa":user}}</h3>
+            <h3 style="margin-top:30px">{{user==null?"":user}}</h3>
           </b-col>
         </b-row>
         <b-row class="message-bar" >
