@@ -17,9 +17,13 @@ describe('MessageFrame.vue', () => {
         actions = {
             logout: jest.fn()
         }
+        getters = {
+            showFlyingBird: () => 'true'
+        }
         store = new Vuex.Store({
             state:{},
-            actions
+            actions,
+            getters
         })
         
     })
