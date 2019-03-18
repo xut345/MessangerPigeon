@@ -78,9 +78,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions( 
-        ['addPigeonToList','showFlyingBird','hideFlyingBird']
-    ),
     openModal(ref) {
         this.$refs[ref].open();
     },
@@ -94,6 +91,7 @@ export default {
         
       try {
         const response = await PigeonService.sendPigeon(data)
+        console.log(response)
 
       }
       catch (error){
@@ -123,9 +121,9 @@ export default {
 
     }
   },
-   computed: {
-        ...mapGetters(['user'])
-    }
+    computed: {
+      ...mapGetters(['user'])
+  }
 
 }
 </script>

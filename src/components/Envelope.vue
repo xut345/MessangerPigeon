@@ -6,10 +6,10 @@
         <div class="wing2 left2"></div>
         <div class="wing2 right2"></div>
         <div class="envelope1">
-            <abbr title="Private Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')"></div></abbr>
+            <abbr title="Public Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')"></div></abbr>
         </div>
         <div class="envelope2">
-            <abbr title="Public Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')"></div></abbr>
+            <abbr title="Private Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')"></div></abbr>
         </div>
     </div>
     <ui-modal ref="receiveMessage" title= "New Pigeon"  size="large" align-top :align-top-margin="100">
@@ -147,6 +147,7 @@ export default {
         
       try {
         const response = await PigeonService.sendResponse(data)
+        console.log(response)
 
       }
       catch (error){
@@ -167,7 +168,7 @@ export default {
     },
   },
   computed: {
-        ...mapGetters(['toBePickUpMessageList','user','userPigeonMessageList'])
+        ...mapGetters(['toBePickUpMessageList','user'])
     }
 }
 </script>

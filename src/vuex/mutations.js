@@ -58,7 +58,7 @@ export const pickNewMessageBox = (state, pigeon) => {
 }
 
 export const sendResponse = (state, data) => {
-    state.toBePickUpMessageList.messages = state.toBePickUpMessageList.messages.concat(data.message_contents)
+    state.toBePickUpMessageList.messages = state.toBePickUpMessageList.messages.concat(data)
 }
 
 export const respondPigeon = (state, data) => {
@@ -67,6 +67,7 @@ export const respondPigeon = (state, data) => {
 
 export const getPigeonList = (state, pigeonList) => {
   state.userPigeonList = pigeonList
+
 }
 
 export const getPigeonMessage = (state, messageList) => {
