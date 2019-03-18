@@ -6,7 +6,7 @@ import store from '@/vuex/store'
 export default {
     register (credentials) {
       return Api().post('register', credentials).then(function (response) {
-        if(response.statusText==='Created'){
+        if(response.statusText==='C reated'){
           localStorage.setItem('user', credentials.email);
           localStorage.setItem('token', response.data.authorization);
 
