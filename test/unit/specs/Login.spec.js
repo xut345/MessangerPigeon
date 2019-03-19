@@ -1,15 +1,29 @@
-import Vue from 'vue'
-import Login from '@/components/Login'
-import { shallowMount } from '@vue/test-utils'
 
-describe('Login.vue', () => {
+import {mount, shallowMount} from '@vue/test-utils'
+import Login from '@/components/Login.vue'
+import expect from 'expect';
+
+describe('Login', () => {
+  let email ='test'
+
+  let password = 'asd'
+  let wrapper;
+
+
   it('should render correct contents', () => {
-    // const Constructor = Vue.extend(HelloWorld)
-    // const vm = new Constructor().shallowMount()
-    
-    // const wrapper = shallowMount(Login)
-    // expect(wrapper.find('.notice').text()).toEqual('Click the Pigeon to start your trip.')
+    wrapper = mount(Login);
+    wrapper.setData({
+      showlogin:true,
+      showRegister:false,
+      email:'111',
+      password:'2222',
+      errorMssg:''
 
-    expect(1).toEqual(1);
+    });
+    wrapper.find('btn btn-secondary').trigger('click')
+
+
+
+    expect(wrapper.html()).toContain('Your username or password is wrong.')
   })
-})
+});
