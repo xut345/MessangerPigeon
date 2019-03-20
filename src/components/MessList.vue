@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="mess-fun">
-        <ui-switch class="switch" v-model="switch1" >{{switch1?"Private":"Public"}}    </ui-switch> 
+        <ui-switch class="switch" v-model="switch1" >{{switch1?"Public":"Private"}}    </ui-switch> 
     </div>
     <div v-if="this.userPigeonList" class="mess-list">
         <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
@@ -40,7 +40,7 @@
       <div v-if="this.userPigeonMessageList">
  <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by===this.user" class=modal-fun>
         
-        <p class="pigeon-sent-info">Your pigeon has been sent out.</p>
+        <p class="pigeon-sent-info">Pigeon has not come back</p>
       </div>
 
       <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by!==this.user" class=modal-fun>
@@ -99,7 +99,6 @@ export default {
         this.clickedPigeon = pigeon
         await PigeonService.getPigeonMessage(pigeon.id, true)
         this.openModal('openPigeon')
-        console.log(this.userPigeonMessageList)
       },
       async sendResponse (data) {
 
