@@ -3,7 +3,7 @@
     <div class="mess-fun">
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Public":"Private"}}    </ui-switch> 
     </div>
-    <div v-if="this.userPigeonList" class="mess-list">
+    <div id="mess-list" v-if="this.userPigeonList" class="mess-list">
         <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
           return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)">{{pigeon.topic}} </div>
     </div>
@@ -61,8 +61,8 @@
               >
               </b-form-textarea>
             </b-form-group>
-            <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
-            <b-button  @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+            <b-button  id="cancel-btn" @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
+            <b-button  id="respond-btn" @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
           </div>
         </ui-modal>
       </div>
@@ -81,7 +81,6 @@ export default {
           content:'',
           currUser:"",
           clickedPigeon:"",
-          sent_by: "",
           switch1:false,
           showAlert:false,
         }
@@ -95,7 +94,6 @@ export default {
       },
       async openPigeon(pigeon){
         this.currUser = this.user
-        this.sent_by = pigeon.sent_by
         this.clickedPigeon = pigeon
         await PigeonService.getPigeonMessage(pigeon.id, true)
         this.openModal('openPigeon')
@@ -103,11 +101,9 @@ export default {
       async sendResponse (data) {
 
         try {
-          const response = await PigeonService.respondPigeon(data)
-
+          await PigeonService.respondPigeon(data)
         }
         catch (error){
-          console.log(error)
         }
       },
       sendResponseMessageBox(ref){

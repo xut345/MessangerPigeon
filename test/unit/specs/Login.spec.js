@@ -13,9 +13,7 @@ localVue.use(KeenUI)
 
 
 describe('Login', () => {
-  let email ='test'
 
-  let password = 'asd'
   let wrapper;
 
   let actions
@@ -27,7 +25,7 @@ describe('Login', () => {
         login: jest.fn()
       }
       getters = {
-        loginError: () => true,
+        loginError: () => false,
         registerError: () => true
 
     }
@@ -45,8 +43,8 @@ describe('Login', () => {
     wrapper.setData({
       showlogin:true,
       showRegister:false,
-      email:'111',
-      password:'2222',
+      email:'xiao',
+      password:'123',
       errorMssg:''
 
     });
@@ -60,8 +58,8 @@ describe('Login', () => {
     wrapper.setData({
       showlogin:false,
       showRegister:true,
-      email:'111',
-      password:'2222',
+      email:'xiao',
+      password:'123',
       errorMssg:''
 
     });
