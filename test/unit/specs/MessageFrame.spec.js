@@ -1,11 +1,14 @@
 import MessageFrame from '@/components/MessageFrame'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
-
+import BootstrapVue from 'bootstrap-vue'
+import KeenUI from 'keen-ui';
 
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
+localVue.use(BootstrapVue)
+localVue.use(KeenUI)
 
 
 describe('MessageFrame.vue', () => {

@@ -6,7 +6,7 @@
   <b-alert :show="registerError">
     Your username has been registered.
   </b-alert>
- <div class="login-wrapper">
+ <div class="login-wrapper open">
   <div class="login-left">
     <div  class="h1"><BirdLogo></BirdLogo></div>
     <div class="notice">
@@ -23,11 +23,9 @@
           <input type="password" id="password1" v-model = "password" placeholder="Password">
        </div>
        <div class="checkbox-container">
-          <!-- <input type="checkbox">
-         <div class="text-checkbox">Remember me</div> -->
        </div> 
        <div class="button-area">
-         <button @click="login" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Login</button>
+         <button @click="login" id="login" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Login</button>
          <button @click="showlogin=false,showRegister=true" class="btn btn-secondary">Sign Up</button>
       </div>
     </div>
@@ -40,11 +38,10 @@
           <input type="password" id="password2" v-model = "password" placeholder="Password">
        </div>
         <div class="checkbox-container">
-          <!-- <input type="checkbox">
-         <div class="text-checkbox">I agree with the terms of service.</div> -->
+         
        </div> 
        <div class="button-area">
-         <button @click="register" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Sign up</button>
+         <button @click="register" id="register" class="btn btn-primary" type = "submit" :disabled='!fieldsFilled'>Sign up</button>
          <button @click="showlogin=true,showRegister=false" class="btn btn-secondary">login</button>
       </div>
     </div>
@@ -83,33 +80,27 @@ export default {
   methods: {
     async register () {
       try {
-        const response = await LoginService.register({
+        await LoginService.register({
           email: this.email,
           password: this.password
         })
       }
       catch (error){
-          console.log(error)
       }
     },
     async login () {
       try {
-        const response = await LoginService.login({
+        LoginService.login({
           email: this.email,
           password: this.password
         })
       }
       catch (error){
-          console.log(error)
       }
     }
   },
   mounted() {
-    var openLoginRight = document.querySelector('.h1');
-    var loginWrapper = document.querySelector('.login-wrapper');
-    openLoginRight.addEventListener('click', function() {
-      loginWrapper.classList.toggle('open'); 
-    });
+
   }
 }
 </script>
