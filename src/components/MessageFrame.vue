@@ -2,7 +2,7 @@
 <div class="root"> 
     <div id="left"> 
       <Profile/>
-      <MessList/>
+      <div class="mess-list"><MessList/></div>
       <div class="left-fun">  <button class="btn btn-outline-secondary btn-logout" @click="userLogout()">Logout</button> </div>
     </div> 
     <div id="right">
@@ -76,14 +76,17 @@ body{
   width: (100%-300px);
 }
 
+.mess-list{
+  width:300px;
+  height:70%;
+}
+
 .left-fun{
   position: fixed;
-  top: 80px;
-  left: 110px;
-  padding-left: 110px;
-  padding-top: 20px;
-  height: 30%;
-  width: 10%;
+  bottom: 10px;
+  left: 120px;
+  height: 5%;
+  width: 5%;
 }
 
 .btn-logout{
