@@ -21,10 +21,6 @@
                                     name="radioBtnOutline" />
                 </b-form-group>
 
-                <b-form-group label="Quantity">
-               <b-form-select v-model="selected1" :options="options1" class="mb-3" />
-               
-                </b-form-group>
 
                 <b-form-group label="Message">
                 <b-form-textarea id="textarea1"
@@ -65,15 +61,6 @@ export default {
         { text: 'Public', value: true },
         { text: 'Private', value: false }
       ],
-      selected1: null,
-      options1: [
-        { value: null, text: 'Please select a quantity' ,disabled: true},
-        { value: 1, text: '1' },
-        { value: 2, text: '2' },
-        { value: 3, text: '3' },
-        { value: 4, text: '4' },
-        { value: 5, text: '5' }
-      ],
       showAlert:false
     }
   },
@@ -87,12 +74,9 @@ export default {
     receiveRandomMessageBox: function(){
         this.show = !this.show;   
     },
-    async sendPigeon (data) {
-        
+    async sendPigeon (data) {        
       try {
         const response = await PigeonService.sendPigeon(data)
-        console.log(response)
-
       }
       catch (error){
           console.log(error)
@@ -110,13 +94,11 @@ export default {
                 topic:this.title,
                 message_content:this.content,
                 isPublic:this.selected,
-                num:this.selected1
             }
             this.sendPigeon(newPigeon)
             this.title = ''
             this.content = ''
             this.selected = false
-            this.selected1 = null
         }
 
     }

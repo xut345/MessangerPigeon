@@ -5,9 +5,11 @@ import store from '@/vuex/store'
 export default {
   sendPigeon (data) {
     return Api().post('sendPigeon', data).then(function (response) {
+      console.log(response)
       if(response.statusText==='Created'){
         store.commit('showFlyingBird');
         store.commit('hideFlyingBird');
+        store.commit('addPigeonToList',response.data);
       }
     }).catch(function (error) {
       console.log(error)        
