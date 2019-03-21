@@ -147,8 +147,6 @@ export default {
         
       try {
         const response = await PigeonService.sendResponse(data)
-        console.log(response)
-
       }
       catch (error){
           console.log(error)

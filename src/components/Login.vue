@@ -61,6 +61,7 @@ import {mapActions, mapGetters} from 'vuex'
 import router from '@/router/index'
 
 export default {
+
   data() {
     return {
       showlogin:true,
