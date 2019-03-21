@@ -1,6 +1,6 @@
 <template>
 <div class="body">
-  <div class="login-wrapper">
+  <div class="login-wrapper">z
     <h2 class="text-center">Sorry. You have to login first.</h2>
     <button class="text-center btn btn-danger" @click="goToLogin()"> Go to login</button>
 
