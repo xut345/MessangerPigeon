@@ -1,8 +1,8 @@
 <template>
     <div>
 
-      <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
-      <ui-button class="self-btn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
+      <ui-button class="self-btn" id="send" @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
+      <ui-button class="self-btn"  @click="receiveRandomMessageBox()" id="recieve"> <div class="receive-btn">  RECEIVE </div> </ui-button>
       
         <ui-modal ref="sendMessage" title="New Pigeon"  size="large" align-top :align-top-margin="200">
                    
@@ -30,7 +30,7 @@
                         :max-rows="10">
                 </b-form-textarea>
                 </b-form-group>
-                <b-button  @click="sendNewMessageBox('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
+                <b-button  @click="sendNewMessageBox('sendMessage')" id="sendNewMessageBox" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
             </div>
         </ui-modal>
         <Envelope v-show="show"/>
@@ -76,14 +76,14 @@ export default {
     },
     async sendPigeon (data) {        
       try {
-        const response = await PigeonService.sendPigeon(data)
+        await PigeonService.sendPigeon(data)
       }
       catch (error){
-          console.log(error)
+         
       }
     },
     sendNewMessageBox(ref){
-        if(this.title.length==0 || this.content.length==0 || this.selected1===null){
+        if(this.title.length==0 || this.content.length==0 || this.selected===null){
             this.showAlert=true
         }
         else{
