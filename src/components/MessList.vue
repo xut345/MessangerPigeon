@@ -148,7 +148,7 @@ export default {
   .mess-list{
     overflow-y: auto;
     overflow-x: hidden;
-    max-height:60%;
+    max-height:50%;
     width: 100%;
     opacity: 0.9;
     white-space:nowrap;
