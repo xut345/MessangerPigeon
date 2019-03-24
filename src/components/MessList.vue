@@ -5,7 +5,7 @@
     </div>
     <div v-if="this.userPigeonList" class="mess-list">
         <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
-          return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)">{{pigeon.topic}} </div>
+          return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)" id="choosethepigeon">{{pigeon.topic}} </div>
     </div>
     <ui-modal class="pigeon" ref="openPigeon" title=" " size="large" align-top :align-top-margin="100">
       <div>
@@ -44,7 +44,7 @@
       </div>
 
       <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by!==this.user" class=modal-fun>
-        <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+       123 <b-button  @click="openModal('respondMessage')" id="opentheModal" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
       </div>
 
       </div>
@@ -61,8 +61,8 @@
               >
               </b-form-textarea>
             </b-form-group>
-            <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
-            <b-button  @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+            <b-button  @click="closeRespondMessageBox('respondMessage')"  id = "closeMessageBox" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
+            <b-button  @click="sendResponseMessageBox('respondMessage')" id = "sendMessageBox"size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
           </div>
         </ui-modal>
       </div>
