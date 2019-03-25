@@ -15,7 +15,7 @@ export function addPigeonToList({commit}, newPigeon) {
 }
  
 
-export function pickNewMessageBox({commit}, pigeon) {
+export function pickNewMessageBox({commit}) {
     return commit ('pickNewMessageBox')
 }
 
@@ -27,7 +27,7 @@ export function respondPigeon({commit}, message) {
   return commit ('respondPigeon', message)
 }
 
-export function login({commit}, user) {
+export function login({commit}) {
     return commit ('login')
 }
 
@@ -37,7 +37,7 @@ export function logout({commit}) {
 }
 
 
-export function setToken({commit}, token) {
+export function setToken({commit}) {
     return commit ('setToken')
 }
 

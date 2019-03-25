@@ -43,7 +43,7 @@
             </b-form-text>
         </div>
         <div class="modal-fun">
-           <b-button  v-if="this.ableToReject" @click="rejectPigeon('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
+           <b-button  v-if="this.ableToReject" @click="rejectPigeon('receiveMessage')" id= "rejectBtn" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
            <b-button  @click="openModal('respondMessage')" id= "opentheModal" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
         </div>
         <div>
@@ -136,20 +136,18 @@ export default {
     async assignPigeon (data) {
         
       try {
-        const response = await PigeonService.assignPigeon(data)
+        await PigeonService.assignPigeon(data)
 
       }
       catch (error){
-          console.log(error)
       }
     },
     async sendResponse (data) {
         
       try {
-        const response = await PigeonService.sendResponse(data)
+        await PigeonService.sendResponse(data)
       }
       catch (error){
-          console.log(error)
       }
     },
     async rejectPigeon(ref){
@@ -161,7 +159,6 @@ export default {
         }
         await PigeonService.declineMessage(rejectInfo)
       }catch (e) {
-        console.log(e)
       }
     },
   },
