@@ -62,7 +62,7 @@
               </b-form-textarea>
             </b-form-group>
             <b-button  @click="closeRespondMessageBox('respondMessage')"  id = "closeMessageBox" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
-            <b-button  @click="sendResponseMessageBox('respondMessage')" id = "sendMessageBox"size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+            <b-button  @click="sendResponseMessageBox('respondMessage')" id = "sendMessageBox" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
           </div>
         </ui-modal>
       </div>
