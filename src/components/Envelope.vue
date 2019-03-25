@@ -6,10 +6,10 @@
         <div class="wing2 left2"></div>
         <div class="wing2 right2"></div>
         <div class="envelope1">
-            <abbr title="Public Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')"></div></abbr>
+            <abbr title="Public Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')" id = "choosethepigeon"></div></abbr>
         </div>
         <div class="envelope2">
-            <abbr title="Private Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')"></div></abbr>
+            <abbr title="Private Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')" id = "openpublicbox"></div></abbr>
         </div>
     </div>
     <ui-modal ref="receiveMessage" title= "New Pigeon"  size="large" align-top :align-top-margin="100">
@@ -43,8 +43,8 @@
             </b-form-text>
         </div>
         <div class="modal-fun">
-            <b-button  v-if="this.ableToReject" @click="rejectPigeon('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
-            <b-button  @click="openModal('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+           <b-button  v-if="this.ableToReject" @click="rejectPigeon('receiveMessage')" size="lg" variant="outline-primary" style="float:left" > Reject </b-button>
+           <b-button  @click="openModal('respondMessage')" id= "opentheModal" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
         </div>
         <div>
             <ui-modal ref="respondMessage" title= "Respond"  size="large" align-top :align-top-margin="100">
@@ -58,8 +58,8 @@
                         >
                     </b-form-textarea>
                 </b-form-group>
-                <b-button  @click="closeRespondMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
-                <b-button  @click="sendResponseMessageBox('respondMessage')" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+                <b-button  @click="closeRespondMessageBox('respondMessage')" id="closeMessageBox" size="lg" variant="outline-primary" style="float:left" > Cancel </b-button>
+                <b-button  @click="sendResponseMessageBox('respondMessage')" id="sendMessageBox" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
                 </div>
             </ui-modal>
         </div>
