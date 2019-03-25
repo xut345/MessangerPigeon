@@ -72,6 +72,7 @@ export const getPigeonList = (state, pigeonList) => {
 
 export const getPigeonMessage = (state, messageList) => {
   state.userPigeonMessageList = messageList
+  state.userPigeonMessageList.sort((a,b) => { return a.sent_time - b.sent_time;});
 }
 
 export const declinePigeon = (state, pigeonId) => {

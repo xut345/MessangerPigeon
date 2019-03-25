@@ -44,7 +44,7 @@
       </div>
 
       <div v-if="this.userPigeonMessageList[this.userPigeonMessageList.length-1].sent_by!==this.user" class=modal-fun>
-       123 <b-button  @click="openModal('respondMessage')" id="opentheModal" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
+        <b-button  @click="openModal('respondMessage')" id="opentheModal" size="lg" variant="outline-primary" style="float:right" > Respond </b-button>
       </div>
 
       </div>
