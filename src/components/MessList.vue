@@ -3,7 +3,7 @@
     <div class="mess-fun">
         <ui-switch class="switch" v-model="switch1" >{{switch1?"Public":"Private"}}    </ui-switch> 
     </div>
-    <div v-if="this.userPigeonList" class="mess-list">
+    <div id="mess-list" v-if="this.userPigeonList" class="mess-list">
         <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
           return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)" id="choosethepigeon">{{pigeon.topic}} </div>
     </div>
@@ -81,7 +81,6 @@ export default {
           content:'',
           currUser:"",
           clickedPigeon:"",
-          sent_by: "",
           switch1:false,
           showAlert:false,
         }
@@ -95,7 +94,6 @@ export default {
       },
       async openPigeon(pigeon){
         this.currUser = this.user
-        this.sent_by = pigeon.sent_by
         this.clickedPigeon = pigeon
         await PigeonService.getPigeonMessage(pigeon.id, true)
         this.openModal('openPigeon')
@@ -103,11 +101,9 @@ export default {
       async sendResponse (data) {
 
         try {
-          const response = await PigeonService.respondPigeon(data)
-
+          await PigeonService.respondPigeon(data)
         }
         catch (error){
-          console.log(error)
         }
       },
       sendResponseMessageBox(ref){
