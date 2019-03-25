@@ -1,9 +1,10 @@
-import Envelope from '@/components/Envelope'
+import MessageBox from '@/components/MessageBox'
 import { mount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import BootstrapVue from 'bootstrap-vue'
 import KeenUI from 'keen-ui';
 import store from '../../../src/vuex/store'
+
 const localVue = createLocalVue()
 
 localVue.use(Vuex)
@@ -19,12 +20,9 @@ describe('Envelope', () => {
 
   beforeEach(()=>{
       actions = {
-        openPigeon:jest.fn(),
-        respondPigeon:jest.fn(),
-        addPigeonToList:jest.fn()
       }
       getters = {
-
+        user: () => "test",
         toBePickUpMessageList: () => [
           {
               "currently_at": "a",
@@ -53,9 +51,6 @@ describe('Envelope', () => {
               "id": "MgFr0tJybqZnbvqSwZdh"
           }
       ],
-    
-        user: () => "test"
-
     }
       store = new Vuex.Store({
           state:{},
@@ -65,87 +60,65 @@ describe('Envelope', () => {
       
   })
 
-  it('close RespondMessage Box', () => {
-    const wrapper = mount(Envelope,{store, localVue});
+
+
+  it('show receive options', () => {
+    const wrapper = mount(MessageBox,{store, localVue});
 
     wrapper.setData({
-        showAlert:true,
-        content:'testing'
+      show:false
     })
     
-    expect(wrapper.contains('#choosethepigeon')).toBe(true)
-    wrapper.find('#choosethepigeon').trigger('click')
-    expect(wrapper.contains('#opentheModal')).toBe(true)
-    wrapper.find('#opentheModal').trigger('click')
-    expect(wrapper.contains('#closeMessageBox')).toBe(true)
-    wrapper.find('#closeMessageBox').trigger('click')
-    expect(wrapper.vm.showAlert).toBe(false)
-    expect(wrapper.vm.content).toBe('')
+    expect(wrapper.contains('#sendBtn')).toBe(true)
+    expect(wrapper.contains('#receiveBtn')).toBe(true)
+    wrapper.find('#receiveBtn').trigger('click')
+    expect(wrapper.contains('#envelop')).toBe(true)
+    expect(wrapper.vm.show).toBe(true)
   })
 
-  it('send RespondMessage Box with showing alert', () => {
-    const wrapper = mount(Envelope,{store, localVue});
+
+  it('send pigeon', () => {
+    const wrapper = mount(MessageBox,{store, localVue});
 
     wrapper.setData({
-        showAlert:false,
-        content:''
+      title: '123',
+      content:'asdads',
+      selected: true,
     })
     
-    expect(wrapper.contains('#choosethepigeon')).toBe(true)
-    wrapper.find('#choosethepigeon').trigger('click')
-    expect(wrapper.contains('#opentheModal')).toBe(true)
-    wrapper.find('#opentheModal').trigger('click')
-    expect(wrapper.contains('#sendMessageBox')).toBe(true)
-    wrapper.find('#sendMessageBox').trigger('click')
+    expect(wrapper.contains('#sendBtn')).toBe(true)
+    expect(wrapper.contains('#receiveBtn')).toBe(true)
+    wrapper.find('#sendBtn').trigger('click')
+    expect(wrapper.contains('#sendAPigeonBtn')).toBe(true)
+    wrapper.find('#sendAPigeonBtn').trigger('click')
+
+    expect(wrapper.vm.title).toBe('')
+    expect(wrapper.vm.content).toBe('')
+    expect(wrapper.vm.selected).toBe(false)
+  })
+
+
+  it('send empty pigeon', () => {
+    const wrapper = mount(MessageBox,{store, localVue});
+
+    wrapper.setData({
+      title: '',
+      content:'',
+      selected: true,
+      showAlert:false
+    })
+    
+    expect(wrapper.contains('#sendBtn')).toBe(true)
+    expect(wrapper.contains('#receiveBtn')).toBe(true)
+    wrapper.find('#sendBtn').trigger('click')
+    expect(wrapper.contains('#sendAPigeonBtn')).toBe(true)
+    wrapper.find('#sendAPigeonBtn').trigger('click')
+
     expect(wrapper.vm.showAlert).toBe(true)
   })
 
 
-  
-  it('send RespondMessage Box without showing alert', () => {
-    const wrapper = mount(Envelope,{store, localVue});
 
-    wrapper.setData({
-        showAlert:true,
-        content:'1234'
-    })
-    expect(wrapper.contains('#choosethepigeon')).toBe(true)
-    wrapper.find('#choosethepigeon').trigger('click')
-    expect(wrapper.contains('#opentheModal')).toBe(true)
-    wrapper.find('#opentheModal').trigger('click')
-    expect(wrapper.contains('#sendMessageBox')).toBe(true)
-    wrapper.find('#sendMessageBox').trigger('click')
-    expect(wrapper.vm.showAlert).toBe(false)
-    expect(wrapper.vm.content).toBe('')
-
-  })
-
-  it('open public messagebox', () => {
-    const wrapper = mount(Envelope,{store, localVue});
-    expect(wrapper.contains('#openpublicbox')).toBe(true)
-    wrapper.find('#openpublicbox').trigger('click')
-  })
-
-  it('open private messagebox', () => {
-    const wrapper = mount(Envelope,{store, localVue});
-    expect(wrapper.contains('#choosethepigeon')).toBe(true)
-    wrapper.find('#choosethepigeon').trigger('click')
-  })
-
-
-  it('reject a pigeon', () => {
-    const wrapper = mount(Envelope,{store, localVue});
-    wrapper.setData({
-      ableToReject:true
-    })
-    
-    expect(wrapper.contains('#choosethepigeon')).toBe(true)
-    wrapper.find('#choosethepigeon').trigger('click')
-    expect(wrapper.contains('#rejectBtn')).toBe(true)
-    wrapper.find('#rejectBtn').trigger('click')
-    expect(wrapper.vm.ableToReject).toBe(true)
-
-  })
 
   
 });

@@ -1,8 +1,8 @@
 <template>
     <div>
 
-      <ui-button class="self-btn"  @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
-      <ui-button class="self-btn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
+      <ui-button class="self-btn" id="sendBtn" @click="openModal('sendMessage')">  <div class="send-btn">  SEND </div> </ui-button>
+      <ui-button class="self-btn" id="receiveBtn"  @click="receiveRandomMessageBox()"> <div class="receive-btn">  RECEIVE </div> </ui-button>
       
         <ui-modal ref="sendMessage" title="New Pigeon"  size="large" align-top :align-top-margin="200">
                    
@@ -30,10 +30,10 @@
                         :max-rows="10">
                 </b-form-textarea>
                 </b-form-group>
-                <b-button  @click="sendNewMessageBox('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
+                <b-button id="sendAPigeonBtn"  @click="sendNewMessageBox('sendMessage')" size="lg" variant="outline-primary" style="float:right" > Send </b-button>
             </div>
         </ui-modal>
-        <Envelope v-show="show"/>
+        <Envelope v-show="show" id="envelop"/>
     </div>
 </template>
 
@@ -76,10 +76,9 @@ export default {
     },
     async sendPigeon (data) {        
       try {
-        const response = await PigeonService.sendPigeon(data)
+        await PigeonService.sendPigeon(data)
       }
       catch (error){
-          console.log(error)
       }
     },
     sendNewMessageBox(ref){

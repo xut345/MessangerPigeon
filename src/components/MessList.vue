@@ -7,7 +7,7 @@
         <div class="mess" v-for="pigeon in this.userPigeonList.filter(pigeon=>{
           return pigeon.is_public===this.switch1})" v-bind:key="pigeon.id" @click="openPigeon(pigeon)" id="choosethepigeon">{{pigeon.topic}} </div>
     </div>
-    <ui-modal class="pigeon" ref="openPigeon" title=" " size="large" align-top :align-top-margin="100">
+    <ui-modal id="openPigeonModal" class="pigeon" ref="openPigeon" title=" " size="large" align-top :align-top-margin="100">
       <div>
         <b-form-text id="textarea1">
           <div class="message-topic">{{this.clickedPigeon.topic}}</div>

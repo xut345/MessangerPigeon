@@ -83,6 +83,7 @@ describe('MessList', () => {
     expect(wrapper.contains('#choosethepigeon')).toBe(true)
     wrapper.find('#choosethepigeon').trigger('click')
     expect(wrapper.contains('#opentheModal')).toBe(true)
+    expect(wrapper.contains('#openPigeonModal')).toBe(true)
     wrapper.find('#opentheModal').trigger('click')
     expect(wrapper.contains('#closeMessageBox')).toBe(true)
     wrapper.find('#closeMessageBox').trigger('click')
