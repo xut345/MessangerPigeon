@@ -6,10 +6,12 @@
         <div class="wing2 left2"></div>
         <div class="wing2 right2"></div>
         <div class="envelope1">
-            <abbr title="Public Message"><div class="heart1"  @click="openPrivateMessageBox('receiveMessage')" id = "choosethepigeon"></div></abbr>
+            <div class="public">Public Pigeon</div>
+            <abbr title="Public Message"><div class="heart1"  @click="openPublicMessageBox('receiveMessage')" id = "choosethepigeon"></div></abbr>
         </div>
         <div class="envelope2">
-            <abbr title="Private Message"><div class="heart2"  @click="openPublicMessageBox('receiveMessage')" id = "openpublicbox"></div></abbr>
+            <div class="private">Private Pigeon</div>
+            <abbr title="Private Message"><div class="heart2"  @click="openPrivateMessageBox('receiveMessage')" id = "openpublicbox"></div></abbr>
         </div>
     </div>
     <ui-modal ref="receiveMessage" title= "New Pigeon"  size="large" align-top :align-top-margin="100">
@@ -123,7 +125,6 @@ export default {
                 message_content: this.content,
             }
             this.sendResponse(newContent)
-            this.addPigeonToList(this.toBePickUpMessageList)
             this.closeModal(ref)
             this.content = ''
         }
@@ -177,6 +178,14 @@ export default {
       width:600px;
       right:2%;
       top: 2%;
+  }
+  .public, .private{
+    position:absolute;
+    left: 80px;
+    top: 5px;
+    font-size: small;
+    font-weight: 600;
+    color: #888;
   }
 
 .envelope1, .envelope2 {
@@ -338,6 +347,7 @@ export default {
 .heart1,.heart2{
     position: absolute;
     margin: 10% auto;
+    top: 10px;
     left: 30%;
     height: 100px;
     width: 120px;

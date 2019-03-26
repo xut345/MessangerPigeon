@@ -1,9 +1,9 @@
 <template>
 <div class="body">
-  <b-alert :show="loginError">
+  <b-alert :show="loginError" class="alert1">
     Your username or password is wrong.
   </b-alert>
-  <b-alert :show="registerError">
+  <b-alert :show="registerError" class="alert2">
     Your username has been registered.
   </b-alert>
  <div class="login-wrapper open">
@@ -113,7 +113,7 @@ export default {
   box-sizing: border-box;
 }
 
-.alert{
+.alert1, .alert2{
   position: fixed;
   top: 100px;
 
